@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabithaduke — Custom VRChat Avatar Modeler</title>
+<meta name="description" content="Tabithaduke builds custom VRChat avatars, VTubers, and metaverse characters using Unity and Blender. Full-body ready, PC & Quest optimized.">
+<link rel="canonical" href="https://tabithaduke.example/">
+<meta property="og:title" content="Tabithaduke — Custom VRChat Avatar Modeler">
+<meta property="og:description" content="Custom VRChat avatars, VTubers, and metaverse characters. High quality, reasonable price.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- FAVICON: placeholder neon "T" mark generated inline as SVG data URI.
+     Replace href below with your real logo file once uploaded, e.g.:
+     <link rel="icon" type="image/png" href="/assets/logo-favicon.png"> -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23060A0C'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-weight='900' font-size='36' fill='%2339FF14' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Tabithaduke",
+  "jobTitle": "VRChat Avatar Modeler",
+  "description": "Custom VRChat avatar, VTuber, and metaverse character modeler using Unity and Blender.",
+  "sameAs": [
+    "https://www.tiktok.com/@duketabintha_vr",
+    "https://www.x.com/@kayblisspro451",
+    "https://www.instagram.com/@kaydkeira",
+    "https://www.discord.com/tabinda248"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Full-Custom VRChat Avatar Commission",
+  "brand": { "@type": "Brand", "name": "Tabithaduke" },
+  "description": "Full-custom VRChat avatar build, modeled in Blender and rigged in Unity, PC & Quest optimized.",
+  "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "priceCurrency": "USD", "price": "0.00" }
+}
+</script>
+
+<style>
+/* ============================================================
+   TOKEN SYSTEM — NEON CYBERPUNK
+   Color:  bg #05080A · bg2 #0B1417 · green #39FF14 · blue #00E5FF
+           white #EAFBFC · muted #6E8A8F · danger/magenta #FF2E63 (rare accent)
+   Type:   display = Orbitron (wide, geometric, terminal-readout feel)
+           body    = Rajdhani (tall condensed technical sans)
+           utility = Share Tech Mono (HUD / spec labels)
+   Signature: scanline overlay + neon glow borders + grid backdrop + glitch hover
+   ============================================================ */
+:root{
+  --bg:        #05080A;
+  --bg2:       #0B1417;
+  --panel:     rgba(57,255,20,.045);
+  --panel-brd: rgba(57,255,20,.22);
+  --panel-brd-blue: rgba(0,229,255,.28);
+  --green:     #39FF14;
+  --green-dim: #1F8C0B;
+  --blue:      #00E5FF;
+  --white:     #EAFBFC;
+  --muted:     #6E8A8F;
+  --magenta:   #FF2E63;
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+  --max: 1180px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;background:var(--bg);color:var(--white);
+  font-family:var(--font-body);font-size:17px;font-weight:500;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    linear-gradient(rgba(57,255,20,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57,255,20,.035) 1px, transparent 1px),
+    radial-gradient(900px 500px at 20% -10%, rgba(0,229,255,.10), transparent 60%),
+    radial-gradient(800px 600px at 100% 10%, rgba(57,255,20,.08), transparent 60%);
+  background-size:38px 38px, 38px 38px, auto, auto;
+  background-attachment:fixed;
+  position:relative;
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:2000;opacity:.03;
+  background:repeating-linear-gradient(0deg, #fff 0 1px, transparent 1px 3px);
+  mix-blend-mode:overlay;
+}
+img,svg{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;margin:0 0 .5em;line-height:1.2;letter-spacing:.01em;text-transform:uppercase;}
+p{margin:0 0 1em;color:var(--muted);font-size:1.05em;}
+button{font-family:inherit;cursor:pointer;}
+.container{max-width:var(--max);margin:0 auto;padding:0 28px;}
+.neon-text{color:var(--green);text-shadow:0 0 10px rgba(57,255,20,.55), 0 0 22px rgba(57,255,20,.25);}
+.blue-text{color:var(--blue);text-shadow:0 0 10px rgba(0,229,255,.5), 0 0 22px rgba(0,229,255,.22);}
+.eyebrow{
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--blue);display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;
+}
+.eyebrow::before{content:"//";color:var(--green);}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--green);color:var(--bg);padding:10px 16px;z-index:3000;font-family:var(--font-mono);font-size:13px;}
+.skip-link:focus{left:12px;top:12px;}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--green);outline-offset:3px;}
+
+/* ============ HEADER ============ */
+header.site{position:sticky;top:0;z-index:100;background:rgba(5,8,10,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--panel-brd);}
+.nav-wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:var(--max);margin:0 auto;gap:18px;}
+.brand{display:flex;align-items:center;gap:10px;}
+.logo-mark{
+  width:38px;height:38px;border-radius:8px;border:1.5px solid var(--green);
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-display);
+  font-weight:900;color:var(--green);background:rgba(57,255,20,.06);
+  box-shadow:0 0 14px rgba(57,255,20,.35), inset 0 0 8px rgba(57,255,20,.2);
+  flex-shrink:0;
+}
+/* NOTE: replace .logo-mark contents with <img src="your-logo.png" alt="Tabithaduke logo"> once the logo file is provided */
+.wordmark{font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:.04em;white-space:nowrap;}
+nav.primary{display:flex;align-items:center;gap:2px;}
+nav.primary button.navlink{background:none;border:none;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding:9px 11px;position:relative;}
+nav.primary button.navlink:hover{color:var(--white);}
+nav.primary button.navlink[aria-current="page"]{color:var(--green);}
+nav.primary button.navlink[aria-current="page"]::after{content:"";position:absolute;left:11px;right:11px;bottom:0;height:1.5px;background:var(--green);box-shadow:0 0 8px var(--green);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.social-mini{display:flex;gap:6px;}
+.social-mini a{width:30px;height:30px;border-radius:6px;border:1px solid var(--panel-brd);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;color:var(--muted);background:var(--panel);}
+.social-mini a:hover{color:var(--green);border-color:var(--green);box-shadow:0 0 10px rgba(57,255,20,.3);}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;padding:11px 20px;border-radius:6px;border:1px solid transparent;transition:transform .15s ease,box-shadow .15s ease;}
+.btn:hover{transform:translateY(-1px);}
+.btn-neon{background:var(--green);color:var(--bg);font-weight:700;box-shadow:0 0 16px rgba(57,255,20,.4);}
+.btn-neon:hover{box-shadow:0 0 26px rgba(57,255,20,.6);}
+.btn-blue{background:transparent;color:var(--blue);border-color:var(--blue);box-shadow:0 0 0 rgba(0,229,255,0);}
+.btn-blue:hover{box-shadow:0 0 16px rgba(0,229,255,.35);}
+.btn-outline{border-color:var(--panel-brd);color:var(--white);background:var(--panel);}
+.btn-outline:hover{border-color:var(--green);}
+.btn-fiverr{background:#1DBF73;color:#04120b;font-weight:700;}
+.btn-fiverr:hover{opacity:.9;}
+.menu-toggle{display:none;background:var(--panel);border:1px solid var(--panel-brd);padding:9px 11px;border-radius:6px;color:var(--green);}
+
+/* ============ PAGES ============ */
+.page{display:none;animation:fadeIn .4s ease;}
+.page.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+/* ============ HUD / VIEWPORT CHROME (signature element) ============ */
+.viewport{border-radius:10px;border:1px solid var(--panel-brd);background:var(--panel);position:relative;overflow:hidden;box-shadow:0 0 30px rgba(57,255,20,.08);}
+.viewport-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--panel-brd);font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:.05em;}
+.vdot{width:8px;height:8px;border-radius:50%;}
+.vdot.g{background:var(--green);box-shadow:0 0 6px var(--green);} .vdot.b{background:var(--blue);box-shadow:0 0 6px var(--blue);} .vdot.m{background:var(--magenta);box-shadow:0 0 6px var(--magenta);}
+.viewport-stage{aspect-ratio:3/4;position:relative;background:linear-gradient(160deg,#0B1417,#05080A 70%);overflow:hidden;}
+.viewport-stage::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,.06) 1px, transparent 1px);background-size:22px 22px;}
+.avatar-silhouette{position:absolute;left:50%;bottom:0;top:8%;width:42%;transform:translateX(-50%);background:linear-gradient(180deg, var(--green), var(--blue));clip-path:polygon(50% 0%, 66% 8%, 72% 26%, 68% 42%, 78% 46%, 74% 100%, 26% 100%, 22% 46%, 32% 42%, 28% 26%, 34% 8%);opacity:.85;filter:drop-shadow(0 0 18px rgba(57,255,20,.35));}
+.viewport-hud{position:absolute;font-family:var(--font-mono);font-size:9.5px;color:var(--green);letter-spacing:.05em;background:rgba(5,8,10,.7);border:1px solid var(--panel-brd);border-radius:4px;padding:5px 8px;}
+.hud-tl{top:14px;left:14px;} .hud-br{bottom:14px;right:14px;color:var(--blue);border-color:var(--panel-brd-blue);}
+.status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 8px var(--green);animation:pulse 1.6s infinite;}
+@keyframes pulse{0%{box-shadow:0 0 4px rgba(57,255,20,.6);}70%{box-shadow:0 0 14px rgba(57,255,20,0);}100%{box-shadow:0 0 4px rgba(57,255,20,0);}}
+
+/* ============ HOME / HERO ============ */
+.hero{padding:56px 0 28px;}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;}
+.hero h1{font-size:clamp(30px,4.2vw,48px);}
+.hero .lede{font-size:16.5px;max-width:50ch;font-family:var(--font-body);}
+.badge-row{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 24px;}
+.badge{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;padding:6px 11px;border-radius:20px;border:1px solid var(--panel-brd);background:var(--panel);color:var(--muted);display:inline-flex;align-items:center;gap:6px;}
+.badge.status{color:var(--green);border-color:rgba(57,255,20,.35);}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+
+.marquee{padding:28px 0;border-top:1px solid var(--panel-brd);border-bottom:1px solid var(--panel-brd);}
+.marquee-inner{display:flex;align-items:center;gap:34px;flex-wrap:wrap;justify-content:space-between;}
+.marquee-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;}
+.marquee-items{display:flex;gap:30px;flex-wrap:wrap;}
+.marquee-item{font-family:var(--font-display);font-size:14px;color:var(--blue);white-space:nowrap;letter-spacing:.03em;}
+
+.section{padding:70px 0;}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px;flex-wrap:wrap;}
+.section-head h2{font-size:clamp(24px,3vw,36px);max-width:20ch;}
+.section-head .sub{max-width:42ch;}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+
+.avatar-card{border-radius:10px;overflow:hidden;border:1px solid var(--panel-brd);background:var(--panel);transition:transform .2s ease, box-shadow .2s ease;}
+.avatar-card:hover{transform:translateY(-4px);box-shadow:0 0 24px rgba(57,255,20,.18);}
+.avatar-cover{aspect-ratio:3/4;position:relative;background:linear-gradient(160deg,#0B1417,#05080A 70%);overflow:hidden;}
+.avatar-cover::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,.05) 1px, transparent 1px);background-size:18px 18px;}
+.avatar-cover .tags{position:absolute;top:10px;left:10px;display:flex;gap:6px;z-index:2;}
+.mini-tag{font-family:var(--font-mono);font-size:9px;letter-spacing:.04em;text-transform:uppercase;background:rgba(5,8,10,.75);border:1px solid var(--panel-brd);color:var(--green);padding:3px 7px;border-radius:20px;}
+.avatar-cover .name{position:absolute;bottom:14px;left:14px;right:14px;font-family:var(--font-display);font-size:16px;z-index:2;color:var(--white);}
+.avatar-body{padding:18px 18px 20px;}
+.spec-line{display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10.5px;color:var(--blue);text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px;}
+.avatar-body p.blurb{font-size:14px;}
+.avatar-body .btn{margin-top:8px;width:100%;justify-content:center;}
+
+.testimonial{border-radius:10px;border:1px solid var(--panel-brd);background:var(--panel);padding:24px 22px;position:relative;}
+.testimonial::before{content:"//";position:absolute;top:14px;left:16px;font-family:var(--font-display);font-size:14px;color:var(--green);}
+.testimonial p{padding-top:14px;color:var(--white);font-size:14.5px;font-family:var(--font-body);}
+.testimonial .attrib{font-family:var(--font-mono);font-size:10.5px;color:var(--green);text-transform:uppercase;letter-spacing:.05em;}
+
+.cta-panel{border-radius:14px;border:1px solid var(--panel-brd);background:linear-gradient(135deg, rgba(57,255,20,.06), rgba(0,229,255,.05));padding:48px 44px;display:grid;grid-template-columns:1fr auto;gap:34px;align-items:center;position:relative;overflow:hidden;box-shadow:0 0 40px rgba(57,255,20,.08);}
+.discord-orb{width:92px;height:92px;border-radius:12px;border:1.5px solid var(--blue);background:rgba(0,229,255,.06);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:10px;text-align:center;color:var(--blue);font-weight:700;letter-spacing:.04em;box-shadow:0 0 18px rgba(0,229,255,.3);}
+.signup-form{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;}
+.signup-form input[type=email]{flex:1;min-width:220px;padding:13px 16px;border-radius:6px;border:1px solid var(--panel-brd);background:rgba(57,255,20,.04);color:var(--white);font-family:var(--font-body);font-size:15px;}
+.signup-form input[type=email]::placeholder{color:var(--muted);}
+.consent{font-size:12px;color:var(--muted);margin-top:10px;}
+.form-note{font-size:13px;margin-top:12px;color:var(--green);display:none;}
+.form-note.show{display:block;}
+
+.devlog-card{border-top:1px solid var(--panel-brd);padding-top:16px;}
+.devlog-meta{font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--blue);margin-bottom:8px;}
+.devlog-card h3{font-size:16.5px;}
+.devlog-card p{font-size:14px;}
+.tag-pill{display:inline-block;font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--green);border:1px solid rgba(57,255,20,.4);padding:3px 8px;border-radius:20px;margin-top:8px;}
+
+footer.site{background:var(--bg2);border-top:1px solid var(--panel-brd);padding:54px 0 26px;margin-top:30px;}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:38px;padding-bottom:32px;border-bottom:1px solid var(--panel-brd);}
+.footer-grid h4{font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:15px;}
+.footer-grid ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
+.footer-grid a,.footer-grid button.linklike{text-decoration:none;color:var(--muted);font-size:14px;background:none;border:none;padding:0;font-family:inherit;text-align:left;}
+.footer-grid a:hover,.footer-grid button.linklike:hover{color:var(--green);}
+.social-row{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;}
+.social-row a{padding:8px 12px;border:1px solid var(--panel-brd);border-radius:20px;font-family:var(--font-mono);font-size:11px;color:var(--white);display:flex;align-items:center;gap:6px;}
+.social-row a:hover{border-color:var(--green);color:var(--green);box-shadow:0 0 10px rgba(57,255,20,.25);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:22px;flex-wrap:wrap;gap:10px;font-family:var(--font-mono);font-size:11px;color:var(--muted);}
+
+/* ---- AVATAR DETAIL ---- */
+.detail-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;padding:50px 0;}
+.buy-links{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;}
+.buy-links a{font-family:var(--font-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;border:1px solid var(--panel-brd);padding:9px 14px;border-radius:20px;background:var(--panel);}
+.buy-links a:hover{border-color:var(--green);color:var(--green);}
+.spec-table{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px;}
+.spec-table tr{border-bottom:1px solid var(--panel-brd);}
+.spec-table td{padding:11px 0;color:var(--white);}
+.spec-table td:first-child{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;color:var(--blue);width:190px;}
+.video-frame{aspect-ratio:16/9;border-radius:10px;position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;background:linear-gradient(150deg,#0B1417,#05080A);border:1px solid var(--panel-brd);}
+.play-btn{width:60px;height:60px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;box-shadow:0 0 20px rgba(57,255,20,.5);}
+.play-btn::before{content:"";border-style:solid;border-width:9px 0 9px 15px;border-color:transparent transparent transparent var(--bg);margin-left:3px;}
+.video-caption{position:absolute;bottom:14px;left:18px;color:var(--muted);font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;z-index:1;}
+
+/* ---- ABOUT ---- */
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;padding:50px 0;align-items:start;}
+.avatar-portrait{aspect-ratio:4/5;border-radius:10px;background:linear-gradient(160deg,#0B1417,#05080A 70%);position:relative;overflow:hidden;border:1px solid var(--panel-brd);}
+.avatar-portrait::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,.06) 1px, transparent 1px);background-size:20px 20px;}
+.tool-row{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;}
+.timeline{margin-top:30px;border-left:1px solid var(--panel-brd);padding-left:22px;display:flex;flex-direction:column;gap:20px;}
+.timeline-item{position:relative;}
+.timeline-item::before{content:"";position:absolute;left:-27px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);}
+.timeline-year{font-family:var(--font-mono);font-size:11.5px;color:var(--green);letter-spacing:.05em;}
+.timeline-item h4{font-size:14.5px;margin:4px 0 2px;text-transform:none;}
+.timeline-item p{font-size:13.5px;}
+
+/* ---- CONTACT / MEDIA ---- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;padding:50px 0;}
+.form-field{margin-bottom:18px;}
+.form-field label{display:block;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--blue);margin-bottom:6px;}
+.form-field input,.form-field textarea,.form-field select{width:100%;padding:12px 14px;border:1px solid var(--panel-brd);border-radius:6px;background:var(--panel);font-family:var(--font-body);font-size:15px;color:var(--white);}
+.form-field textarea{resize:vertical;min-height:120px;}
+.honeypot{position:absolute;left:-9999px;}
+.press-kit-list{display:flex;flex-direction:column;border-top:1px solid var(--panel-brd);}
+.press-kit-item{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid var(--panel-brd);gap:14px;}
+.press-kit-item .name{font-weight:600;font-size:15px;color:var(--white);}
+.press-kit-item .desc{font-size:12.5px;color:var(--muted);}
+
+/* ---- EVENTS ---- */
+.event-row{display:grid;grid-template-columns:100px 1fr auto;gap:22px;align-items:center;padding:20px 0;border-bottom:1px solid var(--panel-brd);}
+.event-date{font-family:var(--font-mono);text-align:center;background:var(--panel);border:1px solid var(--panel-brd);border-radius:6px;padding:10px 6px;}
+.event-date .d{font-size:22px;font-weight:700;display:block;color:var(--green);}
+.event-date .m{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
+.event-title{font-size:16px;font-weight:600;margin-bottom:4px;color:var(--white);font-family:var(--font-display);text-transform:none;}
+.event-meta{font-family:var(--font-mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+.event-type{display:inline-block;font-family:var(--font-mono);font-size:9.5px;text-transform:uppercase;padding:3px 8px;border-radius:20px;margin-right:8px;}
+.event-type.virtual{background:rgba(0,229,255,.12);color:var(--blue);}
+.event-type.person{background:rgba(57,255,20,.12);color:var(--green);}
+.filter-row{display:flex;gap:10px;margin-bottom:26px;flex-wrap:wrap;}
+.filter-chip{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.04em;padding:8px 14px;border-radius:20px;border:1px solid var(--panel-brd);background:var(--panel);color:var(--muted);}
+.filter-chip[aria-pressed="true"]{background:var(--green);color:var(--bg);border-color:var(--green);}
+
+/* ---- COMMUNITY ---- */
+.queue-panel{border-radius:10px;border:1px solid var(--panel-brd);background:var(--panel);padding:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;margin-bottom:32px;}
+.queue-stat{text-align:center;}
+.queue-stat .num{font-family:var(--font-display);font-size:28px;color:var(--green);}
+.queue-stat .lbl{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);}
+.community-card{border-radius:10px;background:var(--panel);border:1px solid var(--panel-brd);padding:24px;}
+.community-card .icon{width:34px;height:34px;border-radius:8px;background:var(--green);box-shadow:0 0 14px rgba(57,255,20,.4);margin-bottom:14px;}
+.community-card h3{font-size:16px;}
+.community-card p{font-size:13.5px;}
+
+@media (max-width:880px){
+  .hero-grid,.detail-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+  .grid-3{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  nav.primary{display:none;}
+  .menu-toggle{display:inline-flex;}
+  .cta-panel{grid-template-columns:1fr;text-align:left;}
+  .discord-orb{display:none;}
+}
+@media (max-width:600px){
+  .grid-3,.grid-2{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .event-row{grid-template-columns:60px 1fr;}
+  .event-row .btn{grid-column:1/-1;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="nav-wrap">
+    <a href="#" class="brand" data-nav="home">
+      <span class="logo-mark" aria-hidden="true">T</span>
+      <span class="wordmark"><span class="neon-text">TABITHA</span><span class="blue-text">DUKE</span></span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <button class="navlink" data-nav="home" aria-current="page">Home</button>
+      <button class="navlink" data-nav="portfolio">Portfolio</button>
+      <button class="navlink" data-nav="about">About</button>
+      <button class="navlink" data-nav="commissions">Commissions</button>
+      <button class="navlink" data-nav="community">Community</button>
+      <button class="navlink" data-nav="devlog">Devlog</button>
+      <button class="navlink" data-nav="contact">Contact</button>
+    </nav>
+    <div class="nav-right">
+      <div class="social-mini" aria-label="Social media">
+        <a href="https://www.tiktok.com/@duketabintha_vr" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+        <a href="https://www.x.com/@kayblisspro451" target="_blank" rel="noopener" aria-label="X / Twitter">X</a>
+        <a href="https://www.instagram.com/@kaydkeira" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a href="https://www.discord.com/tabinda248" target="_blank" rel="noopener" aria-label="Discord">DC</a>
+      </div>
+      <button class="menu-toggle" aria-label="Open menu" id="menuToggle">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HOME ============ -->
+<section class="page active" id="page-home" data-page="home">
+  <div class="hero container">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Custom VRChat Avatars · VTubers · Metaverse Characters</p>
+        <h1><span class="neon-text">Full-body ready.</span><br><span class="blue-text">Built to be seen.</span></h1>
+        <p class="lede">An expert 3D modeler with years of experience building high quality custom VRChat avatars — from comic-style characters to metaverse builds. Modeled in Blender, rigged in Unity, priced fairly.</p>
+        <div class="badge-row">
+          <span class="badge status"><span class="status-dot"></span> Commissions open</span>
+          <span class="badge">PC · Quest ready</span>
+          <span class="badge">VRChat · VTuber · Custom</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn btn-neon" data-nav="commissions">Book a commission</button>
+          <button class="btn btn-blue" data-nav="portfolio">View portfolio</button>
+          <a class="btn btn-fiverr" href="#" target="_blank" rel="noopener" title="Add your Fiverr gig URL here">Hire me on Fiverr</a>
+        </div>
+      </div>
+      <div class="viewport">
+        <div class="viewport-bar"><span class="vdot g"></span><span class="vdot b"></span><span class="vdot m"></span><span style="margin-left:6px">viewport.blend — avatar_final.fbx</span></div>
+        <div class="viewport-stage">
+          <div class="avatar-silhouette"></div>
+          <span class="viewport-hud hud-tl">TRIS: 62,140 · RANK: EXCELLENT</span>
+          <span class="viewport-hud hud-br">CAM · PERSPECTIVE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee">
+    <div class="container marquee-inner">
+      <span class="marquee-label">Find Tabithaduke on</span>
+      <div class="marquee-items">
+        <span class="marquee-item">TikTok</span>
+        <span class="marquee-item">X</span>
+        <span class="marquee-item">Instagram</span>
+        <span class="marquee-item">Discord</span>
+        <span class="marquee-item">Fiverr</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="section-head">
+      <div><p class="eyebrow">Portfolio</p><h2>Recent builds</h2></div>
+      <p class="sub">Every avatar is modeled with care and optimized for real-world VRChat performance.</p>
+    </div>
+    <div class="grid-3">
+      <div class="avatar-card">
+        <div class="avatar-cover"><div class="tags"><span class="mini-tag">PC/Quest</span><span class="mini-tag">Excellent</span></div><span class="name">Custom Kitsune Build</span></div>
+        <div class="avatar-body"><div class="spec-line"><span>Software: Blender + Unity</span><span>62K tris</span></div><p class="blurb">Full custom sculpt and hand-painted texture, rigged with toggleable tails and gesture-driven ears.</p><button class="btn btn-outline" data-nav="book-detail">View avatar</button></div>
+      </div>
+      <div class="avatar-card">
+        <div class="avatar-cover"><div class="tags"><span class="mini-tag">PC</span><span class="mini-tag">Good</span></div><span class="name">Comic-Style Hero Rework</span></div>
+        <div class="avatar-body"><div class="spec-line"><span>Software: Blender + Unity</span><span>78K tris</span></div><p class="blurb">Custom armor plating and PBR textures built for a comic-character client project.</p><button class="btn btn-outline">View avatar</button></div>
+      </div>
+      <div class="avatar-card">
+        <div class="avatar-cover"><div class="tags"><span class="mini-tag">PC/Quest</span><span class="mini-tag">Excellent</span></div><span class="name">VTuber Custom Model</span></div>
+        <div class="avatar-body"><div class="spec-line"><span>Software: Blender + Unity</span><span>48K tris</span></div><p class="blurb">A Quest-optimized VTuber build with full facial tracking blend shapes and animated toggles.</p><button class="btn btn-outline">View avatar</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section container" style="padding-top:0">
+    <div class="section-head"><div><p class="eyebrow">Client reviews</p><h2>Social proof</h2></div></div>
+    <div class="grid-3">
+      <div class="testimonial"><p>Best commission experience I've had — communicative, on time, and the rig quality is excellent.</p><p class="attrib">— Client, Discord review</p></div>
+      <div class="testimonial"><p>My Quest avatar runs Excellent rank and still looks this good. Genuinely impressed.</p><p class="attrib">— Verified review</p></div>
+      <div class="testimonial"><p>Turned a rough concept into a full custom avatar I use every day, at a very fair price.</p><p class="attrib">— Client, Fiverr review</p></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="cta-panel">
+      <div>
+        <p class="eyebrow">Join the community</p>
+        <h2 style="font-size:28px">Get slot alerts before anyone else.</h2>
+        <p style="max-width:48ch">Subscribers get first access to open commission slots and behind-the-scenes rigging breakdowns.</p>
+        <form class="signup-form" id="newsletterForm">
+          <label for="nlEmail" style="position:absolute;left:-9999px">Email address</label>
+          <input type="email" id="nlEmail" placeholder="you@example.com" required autocomplete="email">
+          <button class="btn btn-neon" type="submit">Notify me</button>
+        </form>
+        <p class="consent">No spam. Unsubscribe anytime. <a href="#" style="text-decoration:underline">Privacy policy</a>.</p>
+        <p class="form-note" id="nlNote">You're on the list — check your inbox to confirm.</p>
+      </div>
+      <a class="discord-orb" href="https://www.discord.com/tabinda248" target="_blank" rel="noopener">JOIN<br>DISCORD</a>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="section-head">
+      <div><p class="eyebrow">Devlog</p><h2>Latest posts</h2></div>
+      <button class="btn btn-outline" data-nav="devlog">Read the devlog</button>
+    </div>
+    <div class="grid-3">
+      <div class="devlog-card"><p class="devlog-meta">June 2026 · Process</p><h3>Optimizing for Quest without losing detail</h3><p>How to keep PC-quality shading running Excellent rank on Quest.</p><span class="tag-pill">Process</span></div>
+      <div class="devlog-card"><p class="devlog-meta">May 2026 · Tips</p><h3>Blender vs. Unity: where each tool earns its place</h3><p>A breakdown of my full pipeline from sculpt to finished Unity package.</p><span class="tag-pill">Tips</span></div>
+      <div class="devlog-card"><p class="devlog-meta">April 2026 · News</p><h3>New commission slots — now open</h3><p>Full-custom slots open this round, plus Quest-only optimization passes.</p><span class="tag-pill">Announcements</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO LISTING ============ -->
+<section class="page" id="page-portfolio" data-page="portfolio">
+  <div class="section container">
+    <p class="eyebrow">Portfolio</p>
+    <h2>All avatars</h2>
+    <p class="sub" style="margin-bottom:34px">Custom VRChat avatars, VTuber models, and metaverse characters — built in Blender, rigged in Unity.</p>
+    <div class="grid-3">
+      <div class="avatar-card"><div class="avatar-cover"><div class="tags"><span class="mini-tag">PC/Quest</span><span class="mini-tag">Excellent</span></div><span class="name">Custom Kitsune Build</span></div><div class="avatar-body"><div class="spec-line"><span>Blender + Unity</span><span>62K tris</span></div><p class="blurb">Full custom sculpt with toggleable tails and bioluminescent accents.</p><button class="btn btn-outline" data-nav="book-detail">View avatar</button></div></div>
+      <div class="avatar-card"><div class="avatar-cover"><div class="tags"><span class="mini-tag">PC</span><span class="mini-tag">Good</span></div><span class="name">Comic-Style Hero Rework</span></div><div class="avatar-body"><div class="spec-line"><span>Blender + Unity</span><span>78K tris</span></div><p class="blurb">Custom armor plating, PBR textures, full gesture-driven face rig.</p><button class="btn btn-outline">View avatar</button></div></div>
+      <div class="avatar-card"><div class="avatar-cover"><div class="tags"><span class="mini-tag">PC/Quest</span><span class="mini-tag">Excellent</span></div><span class="name">VTuber Custom Model</span></div><div class="avatar-body"><div class="spec-line"><span>Blender + Unity</span><span>48K tris</span></div><p class="blurb">Quest-optimized build with full facial tracking blend shapes.</p><button class="btn btn-outline">View avatar</button></div></div>
+      <div class="avatar-card"><div class="avatar-cover"><div class="tags"><span class="mini-tag">PC</span><span class="mini-tag">Medium</span></div><span class="name">Original — Metaverse Character</span></div><div class="avatar-body"><div class="spec-line"><span>Blender + Unity</span><span>94K tris</span></div><p class="blurb">Fully original sculpt for a metaverse-focused client, PC showcase build.</p><button class="btn btn-outline">View avatar</button></div></div>
+      <div class="avatar-card"><div class="avatar-cover"><div class="tags"><span class="mini-tag">PC/Quest</span><span class="mini-tag">Excellent</span></div><span class="name">Stylized Wolf Build</span></div><div class="avatar-body"><div class="spec-line"><span>Blender + Unity</span><span>51K tris</span></div><p class="blurb">Minimalist stylized wolf build, optimized down for Quest without losing detail.</p><button class="btn btn-outline">View avatar</button></div></div>
+      <div class="avatar-card"><div class="avatar-cover"><div class="tags"><span class="mini-tag">PC</span><span class="mini-tag">Good</span></div><span class="name">Mecha Custom Build</span></div><div class="avatar-body"><div class="spec-line"><span>Blender + Unity</span><span>88K tris</span></div><p class="blurb">Hard-surface mecha build with panel-driven toggle system and emissive detailing.</p><button class="btn btn-outline">View avatar</button></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AVATAR DETAIL ============ -->
+<section class="page" id="page-book-detail" data-page="book-detail">
+  <div class="container detail-grid">
+    <div>
+      <div class="viewport">
+        <div class="viewport-bar"><span class="vdot g"></span><span class="vdot b"></span><span class="vdot m"></span><span style="margin-left:6px">kitsune_final.fbx</span></div>
+        <div class="viewport-stage">
+          <div class="avatar-silhouette"></div>
+          <span class="viewport-hud hud-tl">TRIS: 62,140 · RANK: EXCELLENT</span>
+          <span class="viewport-hud hud-br">CAM · PERSPECTIVE</span>
+        </div>
+      </div>
+      <div class="buy-links" aria-label="Purchase or commission links">
+        <a href="#">Booth</a>
+        <a href="#">Gumroad</a>
+        <a href="#" style="border-color:#1DBF73;color:#1DBF73">Fiverr gig</a>
+      </div>
+      <button class="btn btn-neon" style="width:100%;justify-content:center">Commission something like this</button>
+    </div>
+    <div>
+      <p class="eyebrow">Full-Custom Build</p>
+      <h1 style="font-size:32px">Custom Kitsune Build</h1>
+      <p style="font-size:16px">A full custom sculpt and hand-painted texture built for a client who wanted a bioluminescent, ember-toned coat with toggleable tails and a glowing chest marking. Rigged for full-body tracking with custom gesture-driven ear and tail motion.</p>
+      <table class="spec-table">
+        <tr><td>Software</td><td>Blender · Unity</td></tr>
+        <tr><td>Platform</td><td>PC &amp; Quest</td></tr>
+        <tr><td>Performance rank</td><td>Excellent</td></tr>
+        <tr><td>Triangle count</td><td>62,140 tris</td></tr>
+        <tr><td>Formats included</td><td>Unity package · FBX · Source files</td></tr>
+        <tr><td>Usage rights</td><td>Personal use — resale rights available as add-on</td></tr>
+      </table>
+      <div class="video-frame" role="button" tabindex="0" aria-label="Play avatar turntable video">
+        <div class="play-btn"></div>
+        <span class="video-caption">Turntable · 0:42 — replace with your hosted video embed</span>
+      </div>
+      <div style="margin-top:28px">
+        <p class="eyebrow">Client reviews</p>
+        <div class="grid-2">
+          <div class="testimonial"><p>Exactly what I pictured, and the rig is flawless in-world.</p><p class="attrib">— Client review</p></div>
+          <div class="testimonial"><p>Runs Excellent on Quest and still looks this detailed. Rare combo.</p><p class="attrib">— Verified review</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="page" id="page-about" data-page="about">
+  <div class="container about-grid">
+    <div>
+      <div class="avatar-portrait"></div>
+      <div class="tool-row">
+        <span class="badge">Blender</span>
+        <span class="badge">Unity</span>
+        <span class="badge">VRChat SDK</span>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow">About Tabithaduke</p>
+      <h1 style="font-size:30px">An expert in 3D modeling, built on years of practice.</h1>
+      <p style="font-size:16px">An expert in 3D modeling with several years of experience, which has helped perfect these skills in the field. Tabithaduke has successfully created high quality custom VRChat avatars while working with various groups that deal majorly with characters — including comic and metaverse characters. That experience covers VRChat avatars, VTubers, custom avatars, and more.</p>
+      <p style="font-size:14.5px">Every avatar is built using Blender and Unity, with an ongoing focus on refining skills to deliver impeccable quality at a very reasonable price — to the point of being able to make a living from this craft. Feel free to reach out with any questions or commission requests.</p>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-year">Early days</span><h4>First avatar edits</h4><p>Started building and editing avatars, learning Blender and Unity from the ground up.</p></div>
+        <div class="timeline-item"><span class="timeline-year">Growth</span><h4>Working with character groups</h4><p>Collaborated with groups working on comic and metaverse-style characters.</p></div>
+        <div class="timeline-item"><span class="timeline-year">Expansion</span><h4>Custom VRChat &amp; VTuber commissions</h4><p>Expanded into full custom VRChat avatar and VTuber model commissions.</p></div>
+        <div class="timeline-item"><span class="timeline-year">Today</span><h4>Full-time 3D modeling</h4><p>Now offering impeccable quality at a reasonable price, taking commissions full-time.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMISSIONS / SIGNUP LANDING ============ -->
+<section class="page" id="page-commissions" data-page="commissions">
+  <div class="section container" style="max-width:740px;text-align:center">
+    <p class="eyebrow" style="justify-content:center">Commissions</p>
+    <h1 style="font-size:34px">Get on the list before slots open.</h1>
+    <p style="font-size:16.5px">Join the mailing list for first access to new commission slots and behind-the-scenes rigging breakdowns — or hop into the Discord where slots are usually announced first.</p>
+    <div style="display:flex;gap:12px;justify-content:center;margin:20px 0;flex-wrap:wrap">
+      <a class="btn btn-neon" href="https://www.discord.com/tabinda248" target="_blank" rel="noopener">Join Discord</a>
+      <a class="btn btn-fiverr" href="#" target="_blank" rel="noopener">Hire me on Fiverr</a>
+    </div>
+    <form class="signup-form" id="newsletterForm2" style="justify-content:center;max-width:480px;margin:8px auto 0">
+      <label for="nlEmail2" style="position:absolute;left:-9999px">Email address</label>
+      <input type="email" id="nlEmail2" placeholder="you@example.com" required autocomplete="email">
+      <button class="btn btn-neon" type="submit">Notify me</button>
+    </form>
+    <p class="consent">No spam, ever. Unsubscribe with one click. <a href="#" style="text-decoration:underline">Privacy policy</a>.</p>
+    <p class="form-note" id="nlNote2">You're on the list — check your inbox to confirm.</p>
+  </div>
+</section>
+
+<!-- ============ CONTACT / MEDIA ============ -->
+<section class="page" id="page-contact" data-page="contact">
+  <div class="container contact-grid">
+    <div>
+      <p class="eyebrow">Get in touch</p>
+      <h1 style="font-size:28px">Contact</h1>
+      <form id="contactForm">
+        <div class="form-field"><label for="cName">Name / Discord tag</label><input id="cName" type="text" required></div>
+        <div class="form-field"><label for="cEmail">Email</label><input id="cEmail" type="email" required></div>
+        <div class="form-field"><label for="cSubject">Subject</label>
+          <select id="cSubject">
+            <option>Commission inquiry</option>
+            <option>General inquiry</option>
+            <option>Media / press request</option>
+            <option>Collab / streamer partnership</option>
+            <option>Rights &amp; licensing</option>
+          </select>
+        </div>
+        <div class="form-field"><label for="cMessage">Message</label><textarea id="cMessage" required></textarea></div>
+        <input type="text" name="company" class="honeypot" tabindex="-1" autocomplete="off">
+        <button class="btn btn-neon" type="submit">Send message</button>
+        <p class="form-note" id="contactNote">Thanks — your message has been sent.</p>
+      </form>
+    </div>
+    <div>
+      <p class="eyebrow">Press &amp; media kit</p>
+      <h2 style="font-size:22px">Media kit</h2>
+      <p style="font-size:14px">Everything a journalist, streamer, or content creator needs, in one download.</p>
+      <div class="press-kit-list">
+        <div class="press-kit-item"><div><div class="name">Avatar renders</div><div class="desc">Press-quality, transparent background</div></div><button class="btn btn-outline">Download</button></div>
+        <div class="press-kit-item"><div><div class="name">Logo / wordmark</div><div class="desc">Tabithaduke branding assets</div></div><button class="btn btn-outline">Download</button></div>
+        <div class="press-kit-item"><div><div class="name">Bio</div><div class="desc">Short and long versions</div></div><button class="btn btn-outline">Download</button></div>
+        <div class="press-kit-item"><div><div class="name">Fact sheet</div><div class="desc">Specialties, software, stats</div></div><button class="btn btn-outline">Download</button></div>
+      </div>
+      <button class="btn btn-outline" style="margin-top:18px;width:100%;justify-content:center">Download full kit (.zip)</button>
+      <div style="margin-top:26px">
+        <p class="eyebrow">Storefronts &amp; social</p>
+        <div class="buy-links">
+          <a href="#" style="border-color:#1DBF73;color:#1DBF73">Fiverr</a>
+          <a href="https://www.tiktok.com/@duketabintha_vr" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.x.com/@kayblisspro451" target="_blank" rel="noopener">X</a>
+          <a href="https://www.instagram.com/@kaydkeira" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.discord.com/tabinda248" target="_blank" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVENTS ============ -->
+<section class="page" id="page-events" data-page="events">
+  <div class="section container">
+    <p class="eyebrow">Appearances</p>
+    <h1 style="font-size:28px">Events &amp; livestreams</h1>
+    <p class="sub" style="margin-bottom:26px">Slot openings, community meetups, and live modeling streams.</p>
+    <div class="filter-row" role="group" aria-label="Filter events">
+      <button class="filter-chip" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-chip" data-filter="person" aria-pressed="false">In-VRChat / In-person</button>
+      <button class="filter-chip" data-filter="virtual" aria-pressed="false">Stream / Virtual</button>
+    </div>
+    <div id="eventList">
+      <div class="event-row" data-type="virtual">
+        <div class="event-date"><span class="d">03</span><span class="m">Aug</span></div>
+        <div><span class="event-type virtual">Stream</span><div class="event-title">Live modeling session — Kitsune tail toggles</div><div class="event-meta">Twitch · 6:00 PM ET</div></div>
+        <button class="btn btn-outline add-ics" data-title="Live modeling session" data-date="2026-08-03T18:00:00" data-loc="Twitch">Add to calendar</button>
+      </div>
+      <div class="event-row" data-type="person">
+        <div class="event-date"><span class="d">14</span><span class="m">Aug</span></div>
+        <div><span class="event-type person">In-VRChat</span><div class="event-title">Portfolio showcase meetup</div><div class="event-meta">VRChat World: Tabithaduke Studio · 8:00 PM ET</div></div>
+        <button class="btn btn-outline add-ics" data-title="Portfolio showcase meetup" data-date="2026-08-14T20:00:00" data-loc="VRChat">Add to calendar</button>
+      </div>
+      <div class="event-row" data-type="virtual">
+        <div class="event-date"><span class="d">01</span><span class="m">Sep</span></div>
+        <div><span class="event-type virtual">Stream</span><div class="event-title">September commission slots — opening stream</div><div class="event-meta">Discord Stage · 5:00 PM ET</div></div>
+        <button class="btn btn-outline add-ics" data-title="September commission slots opening" data-date="2026-09-01T17:00:00" data-loc="Discord">Add to calendar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMUNITY ============ -->
+<section class="page" id="page-community" data-page="community">
+  <div class="section container">
+    <p class="eyebrow">Community</p>
+    <h1 style="font-size:28px">The Tabithaduke Discord</h1>
+    <p class="sub" style="margin-bottom:24px">A moderated space for clients and anyone into VRChat avatar creation.</p>
+    <div class="queue-panel">
+      <div class="queue-stat"><span class="num">3</span><span class="lbl">Slots open</span></div>
+      <div class="queue-stat"><span class="num">7</span><span class="lbl">In queue</span></div>
+      <div class="queue-stat"><span class="num">~14d</span><span class="lbl">Turnaround</span></div>
+      <a class="btn btn-neon" href="https://www.discord.com/tabinda248" target="_blank" rel="noopener">Join Discord</a>
+    </div>
+    <div class="grid-3">
+      <div class="community-card"><div class="icon"></div><h3>Showcase channel</h3><p>Recent client avatars and fan art, pulled straight from the community showcase channel.</p></div>
+      <div class="community-card"><div class="icon"></div><h3>Live Q&amp;A sessions</h3><p>Regular voice/stage sessions to ask about upcoming slots and the modeling process.</p><button class="btn btn-outline" style="margin-top:12px" data-nav="events">See upcoming dates</button></div>
+      <div class="community-card"><div class="icon"></div><h3>Supporter perks</h3><p>Ko-fi/Patreon supporters get early previews and behind-the-scenes breakdowns.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEVLOG ============ -->
+<section class="page" id="page-devlog" data-page="devlog">
+  <div class="section container">
+    <p class="eyebrow">Devlog</p>
+    <h1 style="font-size:28px">Notes from the workshop</h1>
+    <p class="sub" style="margin-bottom:10px">Modeling breakdowns, tips, and commission news — updated monthly.</p>
+    <div class="filter-row" role="group" aria-label="Filter devlog posts">
+      <button class="filter-chip" data-jfilter="all" aria-pressed="true">All</button>
+      <button class="filter-chip" data-jfilter="Process" aria-pressed="false">Process</button>
+      <button class="filter-chip" data-jfilter="Tips" aria-pressed="false">Tips</button>
+      <button class="filter-chip" data-jfilter="Announcements" aria-pressed="false">News</button>
+    </div>
+    <div class="grid-3" id="journalList">
+      <div class="devlog-card" data-tag="Process"><p class="devlog-meta">June 2026 · Process</p><h3>Optimizing for Quest without losing detail</h3><p>How to keep PC-quality shading running Excellent rank on Quest.</p><span class="tag-pill">Process</span></div>
+      <div class="devlog-card" data-tag="Tips"><p class="devlog-meta">May 2026 · Tips</p><h3>Blender vs. Unity: where each tool earns its place</h3><p>A breakdown of the full pipeline from sculpt to finished Unity package.</p><span class="tag-pill">Tips</span></div>
+      <div class="devlog-card" data-tag="Announcements"><p class="devlog-meta">April 2026 · News</p><h3>New commission slots — now open</h3><p>Full-custom slots open this round, plus Quest-only optimization passes.</p><span class="tag-pill">Announcements</span></div>
+      <div class="devlog-card" data-tag="Process"><p class="devlog-meta">March 2026 · Process</p><h3>Building a gesture-driven face rig from scratch</h3><p>A breakdown of the blend-shape setup behind every custom face rig delivered.</p><span class="tag-pill">Process</span></div>
+      <div class="devlog-card" data-tag="Tips"><p class="devlog-meta">February 2026 · Tips</p><h3>Reading your own performance rank report</h3><p>What VRChat's rank system actually measures, and which numbers matter most.</p><span class="tag-pill">Tips</span></div>
+      <div class="devlog-card" data-tag="Announcements"><p class="devlog-meta">January 2026 · News</p><h3>Now taking commissions on Fiverr</h3><p>Full-custom and base-edit commissions are now bookable directly through Fiverr.</p><span class="tag-pill">Announcements</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:4px">
+          <span class="logo-mark" aria-hidden="true">T</span>
+          <span class="wordmark"><span class="neon-text">TABITHA</span><span class="blue-text">DUKE</span></span>
+        </div>
+        <p style="font-size:14px;margin-top:14px;max-width:32ch">Custom VRChat avatars, VTubers, and metaverse characters. Modeled in Blender, rigged in Unity.</p>
+        <div class="social-row" aria-label="Social media and marketplaces">
+          <a href="https://www.tiktok.com/@duketabintha_vr" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.x.com/@kayblisspro451" target="_blank" rel="noopener">X</a>
+          <a href="https://www.instagram.com/@kaydkeira" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.discord.com/tabinda248" target="_blank" rel="noopener">Discord</a>
+          <a href="#" style="border-color:#1DBF73;color:#1DBF73">Fiverr</a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><button class="linklike navlink" data-nav="portfolio">Portfolio</button></li>
+          <li><button class="linklike navlink" data-nav="about">About</button></li>
+          <li><button class="linklike navlink" data-nav="devlog">Devlog</button></li>
+          <li><button class="linklike navlink" data-nav="events">Events</button></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><button class="linklike navlink" data-nav="commissions">Commissions</button></li>
+          <li><button class="linklike navlink" data-nav="community">Community</button></li>
+          <li><button class="linklike navlink" data-nav="contact">Contact &amp; media kit</button></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Slot alerts</h4>
+        <p style="font-size:13px">Get notified when new commission slots open.</p>
+        <form id="footerForm" style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+          <input type="email" required placeholder="Email" style="flex:1;min-width:120px;padding:9px 10px;border-radius:6px;border:1px solid var(--panel-brd);background:var(--panel);color:var(--white);font-size:13px">
+          <button class="btn btn-neon" type="submit" style="padding:9px 12px">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Tabithaduke. All rights reserved.</span>
+      <span>Product schema, clean URLs, and WCAG 2.1 AA accessibility targets.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var pages = document.querySelectorAll('.page');
+  var navButtons = document.querySelectorAll('[data-nav]');
+  var navLinksTop = document.querySelectorAll('nav.primary .navlink');
+
+  function showPage(name, focusMain){
+    pages.forEach(function(p){ p.classList.toggle('active', p.dataset.page === name); });
+    navLinksTop.forEach(function(b){
+      if(b.dataset.nav === name){ b.setAttribute('aria-current','page'); }
+      else { b.removeAttribute('aria-current'); }
+    });
+    window.location.hash = name;
+    window.scrollTo({top:0, behavior:'auto'});
+    if(focusMain){
+      var main = document.getElementById('main');
+      main.setAttribute('tabindex','-1');
+      main.focus({preventScroll:true});
+    }
+  }
+  navButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = btn.dataset.nav;
+      if(!target) return;
+      showPage(target, true);
+    });
+  });
+  var initial = (window.location.hash || '#home').replace('#','');
+  if(!document.getElementById('page-'+initial)){ initial = 'home'; }
+  showPage(initial, false);
+
+  var menuToggle = document.getElementById('menuToggle');
+  var primaryNav = document.querySelector('nav.primary');
+  menuToggle.addEventListener('click', function(){
+    var open = primaryNav.style.display === 'flex';
+    primaryNav.style.display = open ? 'none' : 'flex';
+    primaryNav.style.flexDirection = 'column';
+    primaryNav.style.position = 'absolute';
+    primaryNav.style.top = '60px';
+    primaryNav.style.left = '0';
+    primaryNav.style.right = '0';
+    primaryNav.style.background = 'var(--bg2)';
+    primaryNav.style.borderBottom = '1px solid var(--panel-brd)';
+    primaryNav.style.padding = '10px 20px 18px';
+    menuToggle.setAttribute('aria-expanded', String(!open));
+  });
+
+  function wireNewsletter(formId, noteId){
+    var form = document.getElementById(formId);
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var note = document.getElementById(noteId);
+      if(note){ note.classList.add('show'); }
+      form.reset();
+    });
+  }
+  wireNewsletter('newsletterForm','nlNote');
+  wireNewsletter('newsletterForm2','nlNote2');
+
+  var footerForm = document.getElementById('footerForm');
+  if(footerForm){
+    footerForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      footerForm.querySelector('input').value = 'Subscribed ✓';
+    });
+  }
+
+  var contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(contactForm.company && contactForm.company.value){ return; }
+      document.getElementById('contactNote').classList.add('show');
+      contactForm.reset();
+    });
+  }
+
+  var filterChips = document.querySelectorAll('[data-filter]');
+  filterChips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      filterChips.forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+      chip.setAttribute('aria-pressed','true');
+      var val = chip.dataset.filter;
+      document.querySelectorAll('#eventList .event-row').forEach(function(row){
+        row.style.display = (val === 'all' || row.dataset.type === val) ? 'grid' : 'none';
+      });
+    });
+  });
+
+  var jchips = document.querySelectorAll('[data-jfilter]');
+  jchips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      jchips.forEach(function(c){ c.setAttribute('aria-pressed','false'); });
+      chip.setAttribute('aria-pressed','true');
+      var val = chip.dataset.jfilter;
+      document.querySelectorAll('#journalList .devlog-card').forEach(function(card){
+        card.style.display = (val === 'all' || card.dataset.tag === val) ? 'block' : 'none';
+      });
+    });
+  });
+
+  document.querySelectorAll('.add-ics').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var title = btn.dataset.title, dt = btn.dataset.date, loc = btn.dataset.loc;
+      var start = dt.replace(/[-:]/g,'').replace('.000','');
+      var ics = ['BEGIN:VCALENDAR','VERSION:2.0','BEGIN:VEVENT','SUMMARY:'+title,'DTSTART:'+start,'LOCATION:'+loc,'DESCRIPTION:Event with Tabithaduke','END:VEVENT','END:VCALENDAR'].join('\r\n');
+      var blob = new Blob([ics], {type:'text/calendar'});
+      var link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = title.replace(/\s+/g,'-').toLowerCase()+'.ics';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  });
+
+  document.querySelectorAll('.video-frame').forEach(function(frame){
+    frame.addEventListener('click', function(){
+      frame.querySelector('.video-caption').textContent = 'Replace .video-frame with an <iframe> embed from YouTube/Vimeo';
+    });
+    frame.addEventListener('keypress', function(e){ if(e.key==='Enter') frame.click(); });
+  });
+})();
+</script>
+</body>
+</html>
