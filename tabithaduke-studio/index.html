@@ -38,6 +38,7 @@
 
 <a href="#main" class="skip-link">Skip to content</a>
 
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <header class="site">
   <div class="nav-wrap">
     <a href="index.html" class="brand">
@@ -63,30 +64,56 @@
 
 <main id="main">
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO (cinematic) ============ -->
   <section class="hero">
+    <div class="hero-aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span></div>
     <div class="container hero-grid">
-      <div>
-        <p class="eyebrow">Custom VRChat Avatar Studio</p>
-        <h1>Custom VRChat avatars, crafted for the metaverse.</h1>
+      <div class="hero-enter">
+        <span class="hero-badge"><span class="dot"></span> Premium Custom Avatar Studio</span>
+        <h1>Custom VRChat avatars, <span class="accent-word">crafted for the metaverse.</span></h1>
         <p class="lede">Tabithaduke Studio designs premium, full-body-ready avatars for VRChat, VTubing, and metaverse platforms — modeled in Blender, rigged in Unity, and optimized to run beautifully on PC and Quest.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="contact.html">Order Your Avatar</a>
           <a class="btn btn-outline" href="portfolio.html">View Portfolio</a>
         </div>
-      </div>
-      <div class="showcase">
-        <div class="showcase-card">
-          <span class="showcase-badge">Featured Build</span>
-          <div class="avatar-silhouette"></div>
+        <div class="hero-trust-row">
+          <span class="badge">PC &amp; Quest Optimized</span>
+          <span class="badge">Blender + Unity Pipeline</span>
+          <span class="badge">Personal Usage Rights Included</span>
         </div>
+      </div>
+      <div class="cinematic-visual hero-enter hero-enter-delay">
+        <span class="showcase-badge">Featured Build</span>
+        <div class="orb-ring" aria-hidden="true"></div>
+        <div class="pedestal-glow" aria-hidden="true"></div>
+        <svg class="avatar-figure" viewBox="0 0 220 420" role="img" aria-label="Stylized placeholder render of a custom avatar build">
+          <defs>
+            <linearGradient id="figGrad0" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="var(--accent)"/>
+              <stop offset="100%" stop-color="var(--accent2)"/>
+            </linearGradient>
+          </defs>
+          <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad0)" fill-opacity="0.95"/>
+          <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad0)" fill-opacity="0.8"/>
+          <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad0)" fill-opacity="1"/>
+          <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad0)" fill-opacity="0.9"/>
+          <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad0)" fill-opacity="0.7"/>
+          <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad0)" fill-opacity="0.7"/>
+          <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad0)" fill-opacity="0.85"/>
+          <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad0)" fill-opacity="0.75"/>
+          <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad0)" fill-opacity="0.75"/>
+          <polygon points="70,72 110,72 108,120 62,120" fill="#FFFFFF" fill-opacity="0.08"/>
+        </svg>
+        <span class="particle p1" aria-hidden="true"></span>
+        <span class="particle p2" aria-hidden="true"></span>
+        <span class="particle p3" aria-hidden="true"></span>
       </div>
     </div>
   </section>
 
   <!-- ============ TRUSTED BY ============ -->
   <section class="trusted">
-    <div class="container trusted-inner">
+    <div class="container trusted-inner reveal">
       <span class="trusted-label">Trusted by</span>
       <div class="trusted-items">
         <span class="trusted-item">VRChat Creators</span>
@@ -98,38 +125,89 @@
     </div>
   </section>
 
-  <!-- ============ AVATAR SHOWCASE CAROUSEL ============ -->
-  <!-- Replace each .banner-visual's inner content (or set a background-image via CSS)
-       with your real avatar renders. Add/remove slides in groups of: one .banner-slide
-       + one matching dot button, and update data-total-slides accordingly. -->
+  <!-- ============ FEATURED PORTFOLIO (carousel) ============ -->
+  <!-- Each .banner-visual currently renders a placeholder SVG figure (see .avatar-figure).
+       To use real renders: replace the <svg class="avatar-figure">...</svg> in a slide with
+       an <img src="assets/portfolio/your-file.jpg" alt="..."> sized to fill .banner-visual,
+       or set a background-image on .banner-visual and remove the SVG. Add/remove slides in
+       matched pairs: one .banner-slide + one .carousel-dot, updating data-total-slides. -->
   <section class="section no-top">
     <div class="container">
-      <div class="banner-carousel glass" id="heroCarousel" data-total-slides="4" aria-roledescription="carousel" aria-label="Avatar showcase" tabindex="0">
+      <div class="section-head reveal">
+        <p class="eyebrow center">Featured Work</p>
+        <h2>The showcase.</h2>
+        <p>A rotating look at recent builds — every avatar modeled, textured, and rigged in-house.</p>
+      </div>
+      <div class="banner-carousel glass reveal" id="heroCarousel" data-total-slides="4" aria-roledescription="carousel" aria-label="Avatar showcase" tabindex="0">
         <div class="banner-track" id="carouselTrack">
           <div class="banner-slide is-active" data-slide="0">
             <div class="banner-visual">
-              <span class="banner-silhouette s1"></span>
+              <svg class="avatar-figure banner-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — Custom Kitsune Build">
+                <defs><linearGradient id="figGrad1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
+                <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad1)" fill-opacity="0.95"/>
+                <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad1)" fill-opacity="0.8"/>
+                <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad1)" fill-opacity="1"/>
+                <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad1)" fill-opacity="0.9"/>
+                <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad1)" fill-opacity="0.7"/>
+                <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad1)" fill-opacity="0.7"/>
+                <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad1)" fill-opacity="0.85"/>
+                <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad1)" fill-opacity="0.75"/>
+                <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad1)" fill-opacity="0.75"/>
+              </svg>
               <span class="tag banner-tag">PC · Quest</span>
               <span class="name banner-caption">Custom Kitsune Build</span>
             </div>
           </div>
           <div class="banner-slide" data-slide="1">
             <div class="banner-visual">
-              <span class="banner-silhouette s2"></span>
+              <svg class="avatar-figure banner-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — Comic-Style Hero Rework">
+                <defs><linearGradient id="figGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
+                <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad2)" fill-opacity="0.95"/>
+                <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad2)" fill-opacity="0.8"/>
+                <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad2)" fill-opacity="1"/>
+                <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad2)" fill-opacity="0.9"/>
+                <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad2)" fill-opacity="0.7"/>
+                <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad2)" fill-opacity="0.7"/>
+                <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad2)" fill-opacity="0.85"/>
+                <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad2)" fill-opacity="0.75"/>
+                <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad2)" fill-opacity="0.75"/>
+              </svg>
               <span class="tag banner-tag">PC</span>
               <span class="name banner-caption">Comic-Style Hero Rework</span>
             </div>
           </div>
           <div class="banner-slide" data-slide="2">
             <div class="banner-visual">
-              <span class="banner-silhouette s3"></span>
+              <svg class="avatar-figure banner-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — VTuber Custom Model">
+                <defs><linearGradient id="figGrad3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
+                <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad3)" fill-opacity="0.95"/>
+                <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad3)" fill-opacity="0.8"/>
+                <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad3)" fill-opacity="1"/>
+                <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad3)" fill-opacity="0.9"/>
+                <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad3)" fill-opacity="0.7"/>
+                <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad3)" fill-opacity="0.7"/>
+                <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad3)" fill-opacity="0.85"/>
+                <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad3)" fill-opacity="0.75"/>
+                <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad3)" fill-opacity="0.75"/>
+              </svg>
               <span class="tag banner-tag">PC · Quest</span>
               <span class="name banner-caption">VTuber Custom Model</span>
             </div>
           </div>
           <div class="banner-slide" data-slide="3">
             <div class="banner-visual">
-              <span class="banner-silhouette s4"></span>
+              <svg class="avatar-figure banner-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — Original Metaverse Character">
+                <defs><linearGradient id="figGrad4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
+                <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad4)" fill-opacity="0.95"/>
+                <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad4)" fill-opacity="0.8"/>
+                <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad4)" fill-opacity="1"/>
+                <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad4)" fill-opacity="0.9"/>
+                <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad4)" fill-opacity="0.7"/>
+                <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad4)" fill-opacity="0.7"/>
+                <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad4)" fill-opacity="0.85"/>
+                <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad4)" fill-opacity="0.75"/>
+                <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad4)" fill-opacity="0.75"/>
+              </svg>
               <span class="tag banner-tag">PC</span>
               <span class="name banner-caption">Original Metaverse Character</span>
             </div>
@@ -144,39 +222,28 @@
           <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 4" data-goto="3" type="button"></button>
         </div>
       </div>
+      <div class="reveal" style="text-align:center;margin-top:36px">
+        <a class="btn btn-outline" href="portfolio.html">See the full portfolio</a>
+      </div>
     </div>
   </section>
 
-  <!-- ============ PORTFOLIO PREVIEW ============ -->
-  <section class="section" id="portfolio-preview">
+  <!-- ============ SERVICES PREVIEW ============ -->
+  <section class="section no-top">
     <div class="container">
-      <div class="section-head">
-        <p class="eyebrow center">Featured Work</p>
-        <h2>A portfolio built on precision.</h2>
-        <p>Every avatar is modeled, textured, and rigged in-house — from stylized creatures to full metaverse characters.</p>
+      <div class="section-head reveal">
+        <p class="eyebrow center">What We Build</p>
+        <h2>Services at a glance.</h2>
+        <p>From first sketch to a finished Unity package — the core of what Tabithaduke Studio offers.</p>
       </div>
-      <div class="grid-3">
-        <article class="avatar-card glass">
-          <div class="avatar-cover"><span class="tag">PC · Quest</span><span class="name">Custom Kitsune Build</span></div>
-          <div class="avatar-body">
-            <p>Full custom sculpt with hand-painted texture, toggleable tails, and gesture-driven ears.</p>
-          </div>
-        </article>
-        <article class="avatar-card glass">
-          <div class="avatar-cover"><span class="tag">PC</span><span class="name">Comic-Style Hero Rework</span></div>
-          <div class="avatar-body">
-            <p>Custom armor plating and PBR textures built for a comic-character client project.</p>
-          </div>
-        </article>
-        <article class="avatar-card glass">
-          <div class="avatar-cover"><span class="tag">PC · Quest</span><span class="name">VTuber Custom Model</span></div>
-          <div class="avatar-body">
-            <p>Quest-optimized VTuber build with full facial tracking blend shapes and animated toggles.</p>
-          </div>
-        </article>
+      <div class="grid-4">
+        <div class="service-card glass reveal reveal-d1"><div class="service-icon">01</div><h3>Custom Avatar Design</h3><p>Full-custom sculpts built from a concept, sketch, or reference.</p></div>
+        <div class="service-card glass reveal reveal-d2"><div class="service-icon">02</div><h3>Full-Body Rigging</h3><p>Clean, tracking-ready rigs built for real VRChat performance.</p></div>
+        <div class="service-card glass reveal reveal-d3"><div class="service-icon">03</div><h3>VTuber Models</h3><p>Facial-tracking-ready models built for streaming and content.</p></div>
+        <div class="service-card glass reveal reveal-d4"><div class="service-icon">04</div><h3>Optimization Pass</h3><p>Getting existing avatars to Good or Excellent performance rank.</p></div>
       </div>
-      <div style="text-align:center;margin-top:36px">
-        <a class="btn btn-outline" href="portfolio.html">See the full portfolio</a>
+      <div class="reveal" style="text-align:center;margin-top:36px">
+        <a class="btn btn-outline" href="services.html">View all services</a>
       </div>
     </div>
   </section>
@@ -184,32 +251,35 @@
   <!-- ============ WHY CHOOSE US (summary) ============ -->
   <section class="section no-top">
     <div class="container">
-      <div class="section-head left">
+      <div class="section-head left reveal">
         <p class="eyebrow">Why Choose Us</p>
         <h2>Years of craft, built into every avatar.</h2>
       </div>
       <div class="why-grid">
-        <div class="why-item glass"><div class="why-icon">✓</div><div><h4>Years of specialized experience</h4><p>Focused entirely on VRChat, VTuber, and metaverse character work.</p></div></div>
-        <div class="why-item glass"><div class="why-icon">✓</div><div><h4>Blender + Unity expertise</h4><p>A full in-house pipeline from sculpt to finished Unity package.</p></div></div>
-        <div class="why-item glass"><div class="why-icon">✓</div><div><h4>Fair, transparent pricing</h4><p>Impeccable quality delivered at a reasonable, honest price.</p></div></div>
-        <div class="why-item glass"><div class="why-icon">✓</div><div><h4>Clear communication</h4><p>Regular updates throughout the build, not just a final delivery.</p></div></div>
+        <div class="why-item glass reveal reveal-d1"><div class="why-icon">✓</div><div><h4>Years of specialized experience</h4><p>Focused entirely on VRChat, VTuber, and metaverse character work.</p></div></div>
+        <div class="why-item glass reveal reveal-d2"><div class="why-icon">✓</div><div><h4>Blender + Unity expertise</h4><p>A full in-house pipeline from sculpt to finished Unity package.</p></div></div>
+        <div class="why-item glass reveal reveal-d3"><div class="why-icon">✓</div><div><h4>Fair, transparent pricing</h4><p>Impeccable quality delivered at a reasonable, honest price.</p></div></div>
+        <div class="why-item glass reveal reveal-d4"><div class="why-icon">✓</div><div><h4>Clear communication</h4><p>Regular updates throughout the build, not just a final delivery.</p></div></div>
       </div>
-      <div style="text-align:center;margin-top:32px">
+      <div class="reveal" style="text-align:center;margin-top:32px">
         <a class="btn btn-outline" href="about.html">More about the studio</a>
       </div>
     </div>
   </section>
 
-  <!-- ============ CTA BANNER ============ -->
+  <!-- ============ CTA BANNER (dramatic close) ============ -->
   <section class="section no-top">
     <div class="container">
-      <div class="glass cta-banner">
-        <p class="eyebrow center">Ready When You Are</p>
-        <h2>Let's build your avatar.</h2>
-        <p style="max-width:52ch;margin:0 auto 24px">Book a commission slot, browse pricing, or reach out with questions — I'll follow up with everything you need.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="contact.html">Order Your Avatar</a>
-          <a class="btn btn-outline" href="pricing.html">View Pricing</a>
+      <div class="glass cta-banner cta-dramatic reveal">
+        <div class="cta-aurora" aria-hidden="true"><span class="c1"></span><span class="c2"></span></div>
+        <div class="cta-content">
+          <p class="eyebrow center">Ready When You Are</p>
+          <h2>Let's build your avatar.</h2>
+          <p style="max-width:52ch;margin:0 auto 24px">Book a commission slot, browse pricing, or reach out with questions — I'll follow up with everything you need.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="contact.html">Order Your Avatar</a>
+            <a class="btn btn-outline" href="pricing.html">View Pricing</a>
+          </div>
         </div>
       </div>
     </div>
