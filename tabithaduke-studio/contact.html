@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Tabithaduke Studio</title>
+<meta name="description" content="Get in touch with Tabithaduke Studio to order a custom VRChat avatar, VTuber model, or metaverse character.">
+<link rel="canonical" href="https://tabithaduke.example/contact.html">
+<meta property="og:title" content="Contact — Tabithaduke Studio">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site">
+  <div class="nav-wrap">
+    <a href="index.html" class="brand">
+      <span class="logo-mark" aria-hidden="true">T</span>
+      <span class="wordmark">Tabithaduke Studio</span>
+    </a>
+    <nav class="primary" aria-label="Primary" id="primaryNav">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="services.html">Services</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-outline" href="portfolio.html">View Portfolio</a>
+      <a class="btn btn-primary" href="contact.html">Order Your Avatar</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="page-header">
+    <div class="container">
+      <p class="eyebrow">Get In Touch</p>
+      <h1>Order your avatar.</h1>
+      <p>Tell me a bit about what you're looking for and I'll follow up with a quote.</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT FORM + INFO ============ -->
+  <section class="section no-top">
+    <div class="container contact-grid">
+      <div class="glass contact-form">
+        <p class="eyebrow">Commission Request</p>
+        <h2 class="h-sm">Start your build.</h2>
+        <p class="contact-lede">Fill this out with as much detail as you have — references, base preference, and deadline all help.</p>
+        <form id="contactForm" novalidate>
+          <div class="form-field">
+            <label for="cName">Name</label>
+            <input id="cName" name="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-field">
+            <label for="cEmail">Email or Discord tag</label>
+            <input id="cEmail" name="email" type="text" placeholder="you@example.com" required>
+          </div>
+          <div class="form-field">
+            <label for="cPackage">Package</label>
+            <select id="cPackage" name="package">
+              <option>Starter</option>
+              <option selected>Custom</option>
+              <option>Premium</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="cMessage">Tell me about your avatar idea</label>
+            <textarea id="cMessage" name="message" placeholder="Base, style, references, deadline..." required></textarea>
+          </div>
+          <!-- Honeypot field for basic spam protection -->
+          <input type="text" name="company" class="honeypot" tabindex="-1" autocomplete="off">
+          <button class="btn btn-primary btn-block" type="submit">Send request</button>
+          <p class="form-note" id="contactNote" role="status">Thanks — your request has been sent. I'll follow up soon.</p>
+        </form>
+      </div>
+      <div class="contact-side">
+        <div class="contact-info-card glass">
+          <div class="contact-info-row">
+            <div class="ic">@</div>
+            <div>
+              <h4>Fiverr</h4>
+              <p>Book directly through my Fiverr storefront.</p>
+              <a class="btn btn-fiverr" style="margin-top: 10px;" href="https://www.fiverr.com/maltindazee" target="_blank" rel="noopener">Visit Fiverr profile</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-info-card glass">
+          <div class="contact-info-row">
+            <div class="ic">#</div>
+            <div><h4>Discord</h4><p>Community server invite coming soon — check back shortly.</p></div>
+          </div>
+          <div class="contact-info-row">
+            <div class="ic">T</div>
+            <div><h4>TikTok</h4><p><a href="https://www.tiktok.com/@duketabintha_vr" target="_blank" rel="noopener">@duketabintha_vr</a></p></div>
+          </div>
+          <div class="contact-info-row">
+            <div class="ic">X</div>
+            <div><h4>X</h4><p><a href="https://www.x.com/@kayblisspro451" target="_blank" rel="noopener">@kayblisspro451</a></p></div>
+          </div>
+          <div class="contact-info-row">
+            <div class="ic">IG</div>
+            <div><h4>Instagram</h4><p><a href="https://www.instagram.com/@kaydkeira" target="_blank" rel="noopener">@kaydkeira</a></p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand footer-brand">
+          <span class="logo-mark" aria-hidden="true">T</span>
+          <span class="wordmark">Tabithaduke Studio</span>
+        </div>
+        <p class="footer-desc">Premium custom VRChat avatars, VTuber models, and metaverse characters.</p>
+        <div class="social-row" aria-label="Social media and platforms">
+          <a href="https://www.tiktok.com/@duketabintha_vr" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.x.com/@kayblisspro451" target="_blank" rel="noopener">X</a>
+          <a href="https://www.instagram.com/@kaydkeira" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.fiverr.com/maltindazee" target="_blank" rel="noopener" class="fiverr-link">Fiverr</a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Ready to start?</h4>
+        <p class="footer-cta-desc">Order your custom avatar today.</p>
+        <a class="btn btn-primary btn-block" href="contact.html">Order Your Avatar</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Tabithaduke Studio. All rights reserved.</span>
+      <span>Fully responsive · WCAG 2.1 AA accessibility targets</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
