@@ -20,6 +20,7 @@
 
 <a href="#main" class="skip-link">Skip to content</a>
 
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 <header class="site">
   <div class="nav-wrap">
     <a href="index.html" class="brand">
@@ -51,65 +52,246 @@
       <p class="breadcrumb"><a href="index.html">Home</a> / Portfolio</p>
       <p class="eyebrow center">Portfolio</p>
       <h1>A portfolio built on precision.</h1>
-      <p>Custom VRChat avatars, VTuber models, and metaverse characters — every build modeled in Blender and rigged in Unity.</p>
+      <p>Custom VRChat avatars, worlds, creature models, and texture work — every project modeled in Blender and built for real VRChat performance, not just a pretty screenshot.</p>
     </div>
   </section>
 
   <!-- ============ FULL PORTFOLIO GRID ============ -->
+  <!-- Real renders live in assets/images/. This is the complete gallery — the homepage
+       only shows a curated preview that links back here. -->
   <section class="section no-top">
     <div class="container">
+
+      <div class="filter-row" id="portfolioFilters" role="group" aria-label="Filter portfolio by category">
+        <button class="filter-chip" type="button" data-filter="all" aria-pressed="true">All Work</button>
+        <button class="filter-chip" type="button" data-filter="vrchat-avatars" aria-pressed="false">VRChat Avatars</button>
+        <button class="filter-chip" type="button" data-filter="vrchat-worlds" aria-pressed="false">VRChat Worlds</button>
+        <button class="filter-chip" type="button" data-filter="creature-models" aria-pressed="false">Character &amp; Creature Models</button>
+        <button class="filter-chip" type="button" data-filter="clothing-texture" aria-pressed="false">Clothing &amp; Texture Design</button>
+      </div>
+
       <div class="grid-3">
-        <article class="avatar-card glass">
-          <div class="avatar-cover"><span class="tag">PC · Quest</span><span class="name">Custom Kitsune Build</span></div>
+
+        <!-- ===== Category: VRChat Avatars ===== -->
+        <article class="avatar-card glass" data-category="vrchat-avatars">
+          <div class="avatar-cover">
+            <img src="assets/images/hero-avatar.png" alt="Signature Avatar Build — VRChat avatar" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">PC · Quest</span>
+            <span class="name">Signature Avatar Build</span>
+          </div>
           <div class="avatar-body">
-            <div class="spec-line"><span>Blender + Unity</span><span>Excellent rank</span></div>
-            <p>Full custom sculpt with hand-painted texture, toggleable tails, and gesture-driven ears.</p>
+            <div class="spec-line"><span>Blender + Unity</span><span>Featured build</span></div>
+            <p>A flagship custom avatar build showcasing full-body rigging, clean topology, and a polished, streaming-ready presentation.</p>
             <a class="btn btn-outline" href="contact.html">Request similar</a>
           </div>
         </article>
-        <article class="avatar-card glass">
-          <div class="avatar-cover"><span class="tag">PC</span><span class="name">Comic-Style Hero Rework</span></div>
+
+        <article class="avatar-card glass" data-category="vrchat-avatars">
+          <div class="avatar-cover">
+            <img src="assets/images/male-avatar.png" alt="Professional Character Model — VRChat avatar" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">PC</span>
+            <span class="name">Professional Character Model</span>
+          </div>
           <div class="avatar-body">
-            <div class="spec-line"><span>Blender + Unity</span><span>Good rank</span></div>
-            <p>Custom armor plating and PBR textures built for a comic-character client project.</p>
+            <div class="spec-line"><span>Blender + Unity</span><span>Game-ready</span></div>
+            <p>Game-ready male character model, optimized for VRChat, Unity, and Unreal Engine with clean, production-ready topology.</p>
             <a class="btn btn-outline" href="contact.html">Request similar</a>
           </div>
         </article>
-        <article class="avatar-card glass">
-          <div class="avatar-cover"><span class="tag">PC · Quest</span><span class="name">VTuber Custom Model</span></div>
+
+        <article class="avatar-card glass" data-category="vrchat-avatars">
+          <div class="avatar-cover">
+            <img src="assets/images/spider-avatar-front.jpg" alt="Custom Avatar Commission — VRChat avatar" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">PC · Quest</span>
+            <span class="name">Custom Avatar Commission</span>
+          </div>
           <div class="avatar-body">
-            <div class="spec-line"><span>Blender + Unity</span><span>Excellent rank</span></div>
-            <p>Quest-optimized VTuber build with full facial tracking blend shapes and animated toggles.</p>
+            <div class="spec-line"><span>Blender + Unity</span><span>Client commission</span></div>
+            <p>An original character commission built from concept through final rig, with optimized topology and hand-finished textures.</p>
             <a class="btn btn-outline" href="contact.html">Request similar</a>
           </div>
         </article>
-        <article class="avatar-card glass">
-          <div class="avatar-cover"><span class="tag">PC</span><span class="name">Original — Metaverse Character</span></div>
+
+        <article class="avatar-card glass" data-category="vrchat-avatars">
+          <div class="avatar-cover">
+            <img src="assets/images/spider-avatar-alt.jpg" alt="Cyber Mask VRChat Avatar" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">PC · Quest</span>
+            <span class="name">Cyber Mask VRChat Avatar</span>
+          </div>
           <div class="avatar-body">
-            <div class="spec-line"><span>Blender + Unity</span><span>Medium rank</span></div>
-            <p>Fully original sculpt for a metaverse-focused client, built as a PC showcase piece.</p>
+            <div class="spec-line"><span>Blender + Unity</span><span>Emissive shader</span></div>
+            <p>Custom VRChat avatar featuring stylized clothing, emissive mask effects, optimized topology and game-ready materials.</p>
             <a class="btn btn-outline" href="contact.html">Request similar</a>
           </div>
         </article>
-        <article class="avatar-card glass">
-          <div class="avatar-cover"><span class="tag">PC · Quest</span><span class="name">Stylized Wolf Build</span></div>
+
+        <!-- ===== Category: VRChat Worlds ===== -->
+        <article class="avatar-card glass" data-category="vrchat-worlds">
+          <div class="avatar-cover">
+            <img src="assets/images/world-mansion.png" alt="Luxury Mansion World — VRChat world" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">VRChat World</span>
+            <span class="name">Luxury Mansion World</span>
+          </div>
           <div class="avatar-body">
-            <div class="spec-line"><span>Blender + Unity</span><span>Excellent rank</span></div>
-            <p>Minimalist stylized wolf build, optimized down for Quest without losing detail.</p>
+            <div class="spec-line"><span>Unity + Udon</span><span>Social hub</span></div>
+            <p>Large interactive VRChat environment designed with cinematic architecture and immersive lighting.</p>
             <a class="btn btn-outline" href="contact.html">Request similar</a>
           </div>
         </article>
-        <article class="avatar-card glass">
-          <div class="avatar-cover"><span class="tag">PC</span><span class="name">Mecha Custom Build</span></div>
+
+        <article class="avatar-card glass" data-category="vrchat-worlds">
+          <div class="avatar-cover">
+            <img src="assets/images/world-bar.png" alt="Medieval Tavern — VRChat world" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">VRChat World</span>
+            <span class="name">Medieval Tavern</span>
+          </div>
           <div class="avatar-body">
-            <div class="spec-line"><span>Blender + Unity</span><span>Good rank</span></div>
-            <p>Hard-surface mecha build with panel-driven toggle system and emissive detailing.</p>
+            <div class="spec-line"><span>Unity + Udon</span><span>Social hub</span></div>
+            <p>Atmospheric social environment featuring realistic lighting, detailed props and optimized performance.</p>
             <a class="btn btn-outline" href="contact.html">Request similar</a>
           </div>
         </article>
+
+        <article class="avatar-card glass" data-category="vrchat-worlds">
+          <div class="avatar-cover">
+            <img src="assets/images/world-lobby.jpg" alt="Grand Lobby Environment — VRChat world" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">VRChat World</span>
+            <span class="name">Grand Lobby Environment</span>
+          </div>
+          <div class="avatar-body">
+            <div class="spec-line"><span>Unity + Udon</span><span>Multi-level</span></div>
+            <p>Multi-level VRChat lobby with optimized lighting, gathering spaces and immersive ambience.</p>
+            <a class="btn btn-outline" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <!-- ===== Category: Character & Creature Models ===== -->
+        <article class="avatar-card glass" data-category="creature-models">
+          <div class="avatar-cover">
+            <img src="assets/images/dragon-model.png" alt="Fantasy Creature Model" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">PC</span>
+            <span class="name">Fantasy Creature Model</span>
+          </div>
+          <div class="avatar-body">
+            <div class="spec-line"><span>Blender + Unity</span><span>Detailed sculpt</span></div>
+            <p>High quality creature sculpt with detailed fur, optimized geometry and production-ready topology.</p>
+            <a class="btn btn-outline" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <article class="avatar-card glass" data-category="creature-models">
+          <div class="avatar-cover">
+            <img src="assets/images/dragon-model-side.png" alt="Creature Side View" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">PC</span>
+            <span class="name">Creature Side View</span>
+          </div>
+          <div class="avatar-body">
+            <div class="spec-line"><span>Blender + Unity</span><span>Alternate angle</span></div>
+            <p>Alternative presentation showing sculpt quality, silhouette and surface detail.</p>
+            <a class="btn btn-outline" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <!-- ===== Category: Clothing & Texture Design ===== -->
+        <article class="avatar-card glass" data-category="clothing-texture">
+          <div class="avatar-cover">
+            <img src="assets/images/hoodie-design.png" alt="Custom VRChat Clothing" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">PC · Quest</span>
+            <span class="name">Custom VRChat Clothing</span>
+          </div>
+          <div class="avatar-body">
+            <div class="spec-line"><span>Blender + Substance</span><span>Modular set</span></div>
+            <p>Stylized hoodie collection designed for avatars with clean UV layouts and optimized textures.</p>
+            <a class="btn btn-outline" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
+        <article class="avatar-card glass" data-category="clothing-texture">
+          <div class="avatar-cover">
+            <img src="assets/images/hoodie-textures.png" alt="Clothing Texture Variations" width="400" height="500" loading="lazy" decoding="async">
+            <span class="tag">Texture Pack</span>
+            <span class="name">Clothing Texture Variations</span>
+          </div>
+          <div class="avatar-body">
+            <div class="spec-line"><span>Substance Painter</span><span>Reusable set</span></div>
+            <p>Multiple texture variants created for customization and avatar personalization.</p>
+            <a class="btn btn-outline" href="contact.html">Request similar</a>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
+
+  <!-- ============ FEATURED SHOWCASE (video) ============ -->
+  <!-- VIDEOS: each .showcase-video-frame below currently shows a placeholder play-button
+       state. To add a real video, replace the <div class="video-placeholder">...</div>
+       inside a card with ONE of the following, then remove the placeholder div:
+
+       MP4 file:
+         <video controls preload="metadata" poster="assets/portfolio/your-poster.jpg">
+           <source src="assets/videos/your-file.mp4" type="video/mp4">
+         </video>
+
+       YouTube embed:
+         <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Your video title"
+           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+           allowfullscreen loading="lazy"></iframe>
+
+       Add or remove cards freely — .showcase-video-grid is a responsive grid and
+       supports any number of .showcase-video-card items. -->
+  <section class="section no-top">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow center">Featured Showcase</p>
+        <h2>See the builds in motion.</h2>
+        <p>Turntables, in-world walkthroughs, and process breakdowns — video tells you more than a still render can.</p>
+      </div>
+      <div class="showcase-video-grid">
+
+        <div class="showcase-video-card glass reveal reveal-d1">
+          <div class="showcase-video-frame">
+            <div class="video-placeholder">
+              <span class="video-play-icon" aria-hidden="true"></span>
+              <span class="video-placeholder-label">Add MP4 or YouTube embed</span>
+            </div>
+          </div>
+          <div class="showcase-video-body">
+            <h3>Avatar Turntable Reel</h3>
+            <p>A full 360° turntable across recent avatar commissions, showing rig, texture, and lighting detail.</p>
+          </div>
+        </div>
+
+        <div class="showcase-video-card glass reveal reveal-d2">
+          <div class="showcase-video-frame">
+            <div class="video-placeholder">
+              <span class="video-play-icon" aria-hidden="true"></span>
+              <span class="video-placeholder-label">Add MP4 or YouTube embed</span>
+            </div>
+          </div>
+          <div class="showcase-video-body">
+            <h3>World Walkthrough</h3>
+            <p>A first-person walkthrough of a recent VRChat world build, from entry point to signature moment.</p>
+          </div>
+        </div>
+
+        <div class="showcase-video-card glass reveal reveal-d3">
+          <div class="showcase-video-frame">
+            <div class="video-placeholder">
+              <span class="video-play-icon" aria-hidden="true"></span>
+              <span class="video-placeholder-label">Add MP4 or YouTube embed</span>
+            </div>
+          </div>
+          <div class="showcase-video-body">
+            <h3>Rigging Process Breakdown</h3>
+            <p>A behind-the-scenes look at building a gesture-driven face rig from blend shapes to finished toggles.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 
   <!-- ============ TESTIMONIALS ============ -->
   <section class="section no-top">

@@ -65,38 +65,19 @@
 <main id="main">
 
   <!-- ============ HERO (fullscreen slider) ============ -->
-  <!-- Each .hero-slide currently renders a placeholder SVG figure (see .avatar-figure).
-       To use real renders: replace the <svg class="avatar-figure">...</svg> in a slide with
-       an <img src="assets/portfolio/your-file.jpg" alt="..."> sized to fill .hero-slide-visual,
-       or set a background-image on .hero-slide-visual and remove the SVG. Add/remove slides in
-       matched pairs: one .hero-slide + one .carousel-dot below, updating data-total-slides. -->
+  <!-- Real renders: assets/images/hero-avatar.png, male-avatar.png, spider-avatar-front.jpg.
+       Add/remove slides in matched trios: one .hero-slide + one .carousel-dot below + one
+       entry in the `slides` array in js/main.js (initHeroSlider), keeping data-total-slides
+       and aria-labels in sync. -->
   <section class="hero" id="heroSection">
     <div class="hero-aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span></div>
 
-    <div class="hero-slider" id="heroSlider" aria-roledescription="carousel" aria-label="Avatar showcase" tabindex="0">
+    <div class="hero-slider" id="heroSlider" aria-roledescription="carousel" aria-label="Avatar showcase" tabindex="0" data-total-slides="3">
       <div class="hero-slide is-active" data-slide="0">
         <div class="hero-slide-visual">
           <div class="orb-ring" aria-hidden="true"></div>
           <div class="pedestal-glow" aria-hidden="true"></div>
-          <svg class="avatar-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — Custom Kitsune Build">
-            <defs><linearGradient id="figGrad1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
-            <ellipse class="figure-shadow" cx="110" cy="404" rx="48" ry="10" fill="#000000" opacity="0.4"/>
-            <polygon class="figure-accent" points="94,30 76,4 100,18" fill="url(#figGrad1)"/>
-            <polygon class="figure-accent" points="126,30 144,4 120,18" fill="url(#figGrad1)"/>
-            <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad1)" fill-opacity="0.95"/>
-            <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad1)" fill-opacity="0.8"/>
-            <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad1)" fill-opacity="1"/>
-            <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad1)" fill-opacity="0.9"/>
-            <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad1)" fill-opacity="0.7"/>
-            <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad1)" fill-opacity="0.7"/>
-            <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad1)" fill-opacity="0.85"/>
-            <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad1)" fill-opacity="0.75"/>
-            <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad1)" fill-opacity="0.75"/>
-            <polygon class="figure-accent" points="128,195 168,222 136,222" fill="url(#figGrad1)"/>
-          </svg>
-          <span class="particle p1" aria-hidden="true"></span>
-          <span class="particle p2" aria-hidden="true"></span>
-          <span class="particle p3" aria-hidden="true"></span>
+          <img class="hero-slide-image" src="assets/images/hero-avatar.png" alt="Custom VRChat avatar — featured render">
         </div>
       </div>
 
@@ -104,23 +85,7 @@
         <div class="hero-slide-visual">
           <div class="orb-ring" aria-hidden="true"></div>
           <div class="pedestal-glow" aria-hidden="true"></div>
-          <svg class="avatar-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — Comic-Style Hero Rework">
-            <defs><linearGradient id="figGrad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
-            <ellipse class="figure-shadow" cx="110" cy="404" rx="48" ry="10" fill="#000000" opacity="0.4"/>
-            <polygon class="figure-accent" points="58,76 162,76 148,205 72,205" fill="url(#figGrad2)" fill-opacity="0.35"/>
-            <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad2)" fill-opacity="0.95"/>
-            <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad2)" fill-opacity="0.8"/>
-            <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad2)" fill-opacity="1"/>
-            <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad2)" fill-opacity="0.9"/>
-            <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad2)" fill-opacity="0.7"/>
-            <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad2)" fill-opacity="0.7"/>
-            <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad2)" fill-opacity="0.85"/>
-            <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad2)" fill-opacity="0.75"/>
-            <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad2)" fill-opacity="0.75"/>
-          </svg>
-          <span class="particle p1" aria-hidden="true"></span>
-          <span class="particle p2" aria-hidden="true"></span>
-          <span class="particle p3" aria-hidden="true"></span>
+          <img class="hero-slide-image" src="assets/images/male-avatar.png" alt="Custom male 3D character model">
         </div>
       </div>
 
@@ -128,49 +93,7 @@
         <div class="hero-slide-visual">
           <div class="orb-ring" aria-hidden="true"></div>
           <div class="pedestal-glow" aria-hidden="true"></div>
-          <svg class="avatar-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — VTuber Custom Model">
-            <defs><linearGradient id="figGrad3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
-            <ellipse class="figure-shadow" cx="110" cy="404" rx="48" ry="10" fill="#000000" opacity="0.4"/>
-            <polygon class="figure-accent" points="92,42 68,96 88,58" fill="url(#figGrad3)"/>
-            <polygon class="figure-accent" points="128,42 152,96 132,58" fill="url(#figGrad3)"/>
-            <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad3)" fill-opacity="0.95"/>
-            <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad3)" fill-opacity="0.8"/>
-            <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad3)" fill-opacity="1"/>
-            <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad3)" fill-opacity="0.9"/>
-            <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad3)" fill-opacity="0.7"/>
-            <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad3)" fill-opacity="0.7"/>
-            <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad3)" fill-opacity="0.85"/>
-            <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad3)" fill-opacity="0.75"/>
-            <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad3)" fill-opacity="0.75"/>
-          </svg>
-          <span class="particle p1" aria-hidden="true"></span>
-          <span class="particle p2" aria-hidden="true"></span>
-          <span class="particle p3" aria-hidden="true"></span>
-        </div>
-      </div>
-
-      <div class="hero-slide" data-slide="3">
-        <div class="hero-slide-visual">
-          <div class="orb-ring" aria-hidden="true"></div>
-          <div class="pedestal-glow" aria-hidden="true"></div>
-          <svg class="avatar-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — Original Metaverse Character">
-            <defs><linearGradient id="figGrad4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
-            <ellipse class="figure-shadow" cx="110" cy="404" rx="48" ry="10" fill="#000000" opacity="0.4"/>
-            <polygon class="figure-accent" points="52,68 82,68 74,98 46,94" fill="url(#figGrad4)"/>
-            <polygon class="figure-accent" points="168,68 138,68 146,98 174,94" fill="url(#figGrad4)"/>
-            <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad4)" fill-opacity="0.95"/>
-            <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad4)" fill-opacity="0.8"/>
-            <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad4)" fill-opacity="1"/>
-            <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad4)" fill-opacity="0.9"/>
-            <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad4)" fill-opacity="0.7"/>
-            <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad4)" fill-opacity="0.7"/>
-            <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad4)" fill-opacity="0.85"/>
-            <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad4)" fill-opacity="0.75"/>
-            <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad4)" fill-opacity="0.75"/>
-          </svg>
-          <span class="particle p1" aria-hidden="true"></span>
-          <span class="particle p2" aria-hidden="true"></span>
-          <span class="particle p3" aria-hidden="true"></span>
+          <img class="hero-slide-image" src="assets/images/spider-avatar-front.jpg" alt="Custom spider-themed VRChat avatar commission">
         </div>
       </div>
     </div>
@@ -180,8 +103,8 @@
     <div class="container">
       <div class="hero-copy hero-enter">
         <span class="hero-badge"><span class="dot"></span> Premium VRChat Avatar Studio</span>
-        <h1>Custom VRChat avatars, <span class="accent-word">built to be unforgettable.</span></h1>
-        <p class="lede">Tabithaduke Studio sculpts full-body-ready avatars for VRChat, VTubing, and the wider metaverse — modeled in Blender, rigged in Unity, and tuned to stay smooth and Excellent-ranked on both PC and Quest.</p>
+        <h1 id="heroHeadline">Custom VRChat Avatars <span class="accent-word">Built for Creators</span></h1>
+        <p class="lede" id="heroLede">High quality VRChat avatars designed for streamers, VTubers, roleplayers and virtual communities.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="contact.html">Order Your Avatar</a>
           <a class="btn btn-outline" href="portfolio.html">View Portfolio</a>
@@ -195,17 +118,16 @@
     </div>
 
     <div class="hero-slide-panel glass hero-enter hero-enter-delay">
-      <span class="hero-slide-tag" id="heroSlideTag">Custom Kitsune Build · PC · Quest</span>
+      <span class="hero-slide-tag" id="heroSlideTag">Custom Avatar · Featured Render</span>
       <div class="hero-slider-nav">
         <button class="carousel-arrow prev" id="heroPrev" type="button" aria-label="Previous avatar">‹</button>
-        <span class="carousel-counter" id="heroCounter" aria-live="polite">01 / 04</span>
+        <span class="carousel-counter" id="heroCounter" aria-live="polite">01 / 03</span>
         <button class="carousel-arrow next" id="heroNext" type="button" aria-label="Next avatar">›</button>
       </div>
       <div class="carousel-dots" id="heroDots" role="tablist" aria-label="Choose an avatar to preview">
         <button class="carousel-dot is-active" role="tab" aria-selected="true" aria-label="Slide 1" data-goto="0" type="button"></button>
         <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 2" data-goto="1" type="button"></button>
         <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 3" data-goto="2" type="button"></button>
-        <button class="carousel-dot" role="tab" aria-selected="false" aria-label="Slide 4" data-goto="3" type="button"></button>
       </div>
     </div>
   </section>
@@ -225,99 +147,49 @@
   </section>
 
   <!-- ============ FEATURED PORTFOLIO ============ -->
-  <!-- Each .avatar-cover currently renders a placeholder SVG figure (see .avatar-figure).
-       To use a real render: replace the <svg class="avatar-figure">...</svg> inside a card
-       with an <img src="assets/portfolio/your-file.jpg" alt="..."> sized to fill .avatar-cover,
-       or set a background-image on .avatar-cover and remove the SVG. -->
+  <!-- This is a curated PREVIEW only (3 highlights) — the complete gallery across all
+       categories lives on portfolio.html. Real renders live in assets/images/. -->
   <section class="section no-top">
     <div class="container">
       <div class="section-head reveal">
         <p class="eyebrow center">Featured Work</p>
-        <h2>See the craft up close.</h2>
-        <p>A curated look at recent builds — every avatar sculpted, textured, and rigged entirely in-house, and tuned for real VRChat performance, not just a pretty render.</p>
+        <h2>A first look at the craft.</h2>
+        <p>A few highlights from recent builds — see the complete gallery, organized by category, on the full portfolio page.</p>
       </div>
       <div class="grid-3">
 
-        <!-- Featured card 1: Kitsune -->
+        <!-- Highlight 1: Avatars -->
         <article class="avatar-card glass reveal reveal-d1">
           <div class="avatar-cover">
-            <svg class="avatar-figure card-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — Custom Kitsune Build">
-              <defs><linearGradient id="figGrad5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
-              <ellipse class="figure-shadow" cx="110" cy="404" rx="48" ry="10" fill="#000000" opacity="0.4"/>
-              <polygon class="figure-accent" points="94,30 76,4 100,18" fill="url(#figGrad5)"/>
-              <polygon class="figure-accent" points="126,30 144,4 120,18" fill="url(#figGrad5)"/>
-              <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad5)" fill-opacity="0.95"/>
-              <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad5)" fill-opacity="0.8"/>
-              <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad5)" fill-opacity="1"/>
-              <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad5)" fill-opacity="0.9"/>
-              <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad5)" fill-opacity="0.7"/>
-              <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad5)" fill-opacity="0.7"/>
-              <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad5)" fill-opacity="0.85"/>
-              <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad5)" fill-opacity="0.75"/>
-              <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad5)" fill-opacity="0.75"/>
-              <polygon class="figure-accent" points="128,195 168,222 136,222" fill="url(#figGrad5)"/>
-            </svg>
-            <span class="tag">PC · Quest · Excellent</span>
-            <span class="name">Custom Kitsune Build</span>
+            <img src="assets/images/spider-avatar-alt.jpg" alt="Cyber Mask VRChat Avatar" width="400" height="500" loading="lazy" decoding="async">
+            <span class="name">Cyber Mask VRChat Avatar</span>
           </div>
           <div class="avatar-body">
-            <p class="spec-line"><span>Base: Kitsune</span><span>62K tris</span></p>
-            <p>Full custom sculpt with hand-painted texture, toggleable tails, and gesture-driven ears — built for daily wear, not just screenshots.</p>
+            <p>Custom VRChat avatar featuring stylized clothing, emissive mask effects, optimized topology and game-ready materials.</p>
             <a class="btn btn-outline" href="portfolio.html">View project details</a>
           </div>
         </article>
 
-        <!-- Featured card 2: Comic-style hero -->
+        <!-- Highlight 2: Creatures -->
         <article class="avatar-card glass reveal reveal-d2">
           <div class="avatar-cover">
-            <svg class="avatar-figure card-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — Comic-Style Hero Rework">
-              <defs><linearGradient id="figGrad6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
-              <ellipse class="figure-shadow" cx="110" cy="404" rx="48" ry="10" fill="#000000" opacity="0.4"/>
-              <polygon class="figure-accent" points="58,76 162,76 148,205 72,205" fill="url(#figGrad6)" fill-opacity="0.35"/>
-              <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad6)" fill-opacity="0.95"/>
-              <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad6)" fill-opacity="0.8"/>
-              <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad6)" fill-opacity="1"/>
-              <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad6)" fill-opacity="0.9"/>
-              <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad6)" fill-opacity="0.7"/>
-              <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad6)" fill-opacity="0.7"/>
-              <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad6)" fill-opacity="0.85"/>
-              <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad6)" fill-opacity="0.75"/>
-              <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad6)" fill-opacity="0.75"/>
-            </svg>
-            <span class="tag">PC · Good</span>
-            <span class="name">Comic-Style Hero Rework</span>
+            <img src="assets/images/dragon-model.png" alt="Fantasy Creature Model" width="400" height="500" loading="lazy" decoding="async">
+            <span class="name">Fantasy Creature Model</span>
           </div>
           <div class="avatar-body">
-            <p class="spec-line"><span>Base: Original</span><span>78K tris</span></p>
-            <p>Custom armor plating and PBR textures built for a client's comic-character adaptation, with a full gesture-driven face rig.</p>
+            <p>High quality creature sculpt with detailed fur, optimized geometry and production-ready topology.</p>
             <a class="btn btn-outline" href="portfolio.html">View project details</a>
           </div>
         </article>
 
-        <!-- Featured card 3: VTuber -->
+        <!-- Highlight 3: Clothing -->
         <article class="avatar-card glass reveal reveal-d3">
           <div class="avatar-cover">
-            <svg class="avatar-figure card-figure" viewBox="0 0 220 420" role="img" aria-label="Placeholder render — VTuber Custom Model">
-              <defs><linearGradient id="figGrad7" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--accent2)"/></linearGradient></defs>
-              <ellipse class="figure-shadow" cx="110" cy="404" rx="48" ry="10" fill="#000000" opacity="0.4"/>
-              <polygon class="figure-accent" points="92,42 68,96 88,58" fill="url(#figGrad7)"/>
-              <polygon class="figure-accent" points="128,42 152,96 132,58" fill="url(#figGrad7)"/>
-              <polygon points="110,18 128,34 122,58 98,58 92,34" fill="url(#figGrad7)" fill-opacity="0.95"/>
-              <polygon points="98,58 122,58 126,72 94,72" fill="url(#figGrad7)" fill-opacity="0.8"/>
-              <polygon points="70,72 150,72 158,120 62,120" fill="url(#figGrad7)" fill-opacity="1"/>
-              <polygon points="62,120 158,120 142,190 78,190" fill="url(#figGrad7)" fill-opacity="0.9"/>
-              <polygon points="70,72 62,120 40,170 34,120" fill="url(#figGrad7)" fill-opacity="0.7"/>
-              <polygon points="150,72 158,120 180,170 186,120" fill="url(#figGrad7)" fill-opacity="0.7"/>
-              <polygon points="78,190 142,190 130,225 90,225" fill="url(#figGrad7)" fill-opacity="0.85"/>
-              <polygon points="90,225 108,225 104,400 82,400" fill="url(#figGrad7)" fill-opacity="0.75"/>
-              <polygon points="112,225 130,225 138,400 116,400" fill="url(#figGrad7)" fill-opacity="0.75"/>
-            </svg>
-            <span class="tag">PC · Quest · Excellent</span>
-            <span class="name">VTuber Custom Model</span>
+            <img src="assets/images/hoodie-design.png" alt="Custom VRChat Clothing" width="400" height="500" loading="lazy" decoding="async">
+            <span class="name">Custom VRChat Clothing</span>
           </div>
           <div class="avatar-body">
-            <p class="spec-line"><span>Base: Original</span><span>48K tris</span></p>
-            <p>Quest-optimized VTuber build with full facial-tracking blend shapes and animated toggles, ready for streaming from day one.</p>
+            <p>Stylized hoodie collection designed for avatars with clean UV layouts and optimized textures.</p>
             <a class="btn btn-outline" href="portfolio.html">View project details</a>
           </div>
         </article>
@@ -325,6 +197,89 @@
       </div>
       <div class="reveal" style="text-align:center;margin-top:36px">
         <a class="btn btn-outline" href="portfolio.html">See the full portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VRCHAT WORLD DESIGN ============ -->
+  <!-- One highlighted world only — the full Worlds category (3 environments) lives
+       on portfolio.html. -->
+  <section class="section no-top">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow center">World Building</p>
+        <h2>VRChat World Design</h2>
+        <p>Beyond avatars — full interactive environments designed for atmosphere, performance, and social flow.</p>
+      </div>
+
+      <div class="reveal" style="max-width: 420px; margin: 0 auto;">
+        <article class="avatar-card glass">
+          <div class="avatar-cover">
+            <img src="assets/images/world-mansion.png" alt="Luxury Mansion World" width="400" height="500" loading="lazy" decoding="async">
+            <span class="name">Luxury Mansion World</span>
+          </div>
+          <div class="avatar-body">
+            <p>Large interactive VRChat environment designed with cinematic architecture and immersive lighting.</p>
+            <a class="btn btn-outline" href="contact.html">Request similar</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="reveal" style="text-align:center;margin-top:28px">
+        <a class="btn btn-outline" href="portfolio.html">See all worlds in the portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECT VIDEOS ============ -->
+  <!-- Native HTML5 <video> placeholders. This section stays even before the files exist —
+       drop matching files into video/ (project1.mp4, project2.mp4, project3.mp4) and
+       playback will work immediately with no markup changes. -->
+  <section class="section no-top">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow center">In Motion</p>
+        <h2>Project Videos</h2>
+        <p>Turntables and walkthroughs for a closer look at recent work.</p>
+      </div>
+      <div class="showcase-video-grid">
+
+        <div class="showcase-video-card glass reveal reveal-d1">
+          <div class="showcase-video-frame">
+            <video controls preload="metadata">
+              <source src="video/project1.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="showcase-video-body">
+            <h3>Project Video 1</h3>
+          </div>
+        </div>
+
+        <div class="showcase-video-card glass reveal reveal-d2">
+          <div class="showcase-video-frame">
+            <video controls preload="metadata">
+              <source src="video/project2.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="showcase-video-body">
+            <h3>Project Video 2</h3>
+          </div>
+        </div>
+
+        <div class="showcase-video-card glass reveal reveal-d3">
+          <div class="showcase-video-frame">
+            <video controls preload="metadata">
+              <source src="video/project3.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+          </div>
+          <div class="showcase-video-body">
+            <h3>Project Video 3</h3>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -338,10 +293,10 @@
         <p>From first sketch to a finished Unity package — the core of what Tabithaduke Studio offers.</p>
       </div>
       <div class="grid-4">
-        <div class="service-card glass reveal reveal-d1"><div class="service-icon">01</div><h3>Custom Avatar Design</h3><p>Full-custom sculpts built from a concept, sketch, or reference.</p></div>
-        <div class="service-card glass reveal reveal-d2"><div class="service-icon">02</div><h3>Full-Body Rigging</h3><p>Clean, tracking-ready rigs built for real VRChat performance.</p></div>
-        <div class="service-card glass reveal reveal-d3"><div class="service-icon">03</div><h3>VTuber Models</h3><p>Facial-tracking-ready models built for streaming and content.</p></div>
-        <div class="service-card glass reveal reveal-d4"><div class="service-icon">04</div><h3>Optimization Pass</h3><p>Getting existing avatars to Good or Excellent performance rank.</p></div>
+        <div class="service-card glass reveal reveal-d1"><div class="service-icon">01</div><h3>Custom VRChat Avatars</h3><p>Full-custom sculpts built from your concept, sketch, or reference.</p></div>
+        <div class="service-card glass reveal reveal-d2"><div class="service-icon">02</div><h3>VRChat Worlds</h3><p>Interactive environments designed for atmosphere and smooth performance.</p></div>
+        <div class="service-card glass reveal reveal-d3"><div class="service-icon">03</div><h3>Character &amp; Creature Design</h3><p>Original creatures and characters, from concept to finished rig.</p></div>
+        <div class="service-card glass reveal reveal-d4"><div class="service-icon">04</div><h3>Clothing &amp; Texture Design</h3><p>Modular outfits and hand-painted textures built for reuse.</p></div>
       </div>
       <div class="reveal" style="text-align:center;margin-top:36px">
         <a class="btn btn-outline" href="services.html">View all services</a>
@@ -375,10 +330,10 @@
         <div class="cta-aurora" aria-hidden="true"><span class="c1"></span><span class="c2"></span></div>
         <div class="cta-content">
           <p class="eyebrow center">Ready When You Are</p>
-          <h2>Let's build your avatar.</h2>
-          <p style="max-width:52ch;margin:0 auto 24px">Book a commission slot, browse pricing, or reach out with questions — I'll follow up with everything you need.</p>
+          <h2>Let's Build Your Next Virtual Experience</h2>
+          <p style="max-width:52ch;margin:0 auto 24px">Whether you need a custom avatar, VRChat world or stylized character, let's bring your vision to life with professional 3D craftsmanship.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="contact.html">Order Your Avatar</a>
+            <a class="btn btn-primary" href="contact.html">Start Your Project</a>
             <a class="btn btn-outline" href="pricing.html">View Pricing</a>
           </div>
         </div>
